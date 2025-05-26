@@ -1,0 +1,27 @@
+ [
+   {
+     "tag": "cyclic:scaffold_fragile",
+     "mass": 0.0,
+     "priority": 101
+   },
+   {
+     "tag": "cyclic:scaffold_responsive",
+     "mass": 0.0,
+     "priority": 101
+   },
+   {
+     "block": "cyclic:spikes_iron",
+     "mass": 10.0,
+     "priority": 101
+   },
+   {
+     "block": "cyclic:spikes_fire",
+     "mass": 10.0,
+     "priority": 101
+   },
+   {
+     "block": "cyclic:spikes_curse",
+     "mass": 10.0,
+     "priority": 101
+   }
+ ]
