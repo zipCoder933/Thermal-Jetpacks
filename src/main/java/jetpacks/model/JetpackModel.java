@@ -64,7 +64,6 @@ public class JetpackModel<T extends LivingEntity> extends HumanoidModel<T> {
                 .texOffs(0, 54)
                 .addBox(-2F, 3F, 3.6F, 4, 5, 2), PartPose.ZERO);
 
-        root.addOrReplaceChild("leftCanister", CubeListBuilder.create().mirror()
 
         /**
          * Tip
@@ -93,6 +92,7 @@ public class JetpackModel<T extends LivingEntity> extends HumanoidModel<T> {
          * Canister
          */
         root.addOrReplaceChild("leftCanister", CubeListBuilder.create().mirror()
+                .texOffs(0, 32)
                 .addBox(0.5F, 2F, 2.6F, 4, 7, 4), PartPose.ZERO);
 
         root.addOrReplaceChild("rightCanister", CubeListBuilder.create().mirror()
