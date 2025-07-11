@@ -1,7 +1,10 @@
 package jetpacks.integration;
 
+import jetpacks.network.NetworkHandler;
+import jetpacks.network.packets.PacketToggleHUD;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
@@ -9,8 +12,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
-import jetpacks.handlers.RegistryHandler;
+import jetpacks.RegistryHandler;
 import top.theillusivec4.curios.api.CuriosCapability;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
@@ -59,8 +63,8 @@ public class CuriosIntegration {
 //        CuriosRendererRegistry.register(RegistryHandler.JETPACK_TE3_ARMORED.get(), () -> new JetpackRenderer(getJetpackTexture("te3_armored")));
         CuriosRendererRegistry.register(RegistryHandler.JETPACK_TE4.get(), () -> new JetpackRenderer(getJetpackTexture("te4")));
 //        CuriosRendererRegistry.register(RegistryHandler.JETPACK_TE4_ARMORED.get(), () -> new JetpackRenderer(getJetpackTexture("te4_armored")));
-        CuriosRendererRegistry.register(RegistryHandler.JETPACK_TE5.get(), () -> new JetpackRenderer(getJetpackTexture("te5")));
-//        CuriosRendererRegistry.register(RegistryHandler.JETPACK_TE5_ARMORED.get(), () -> new JetpackRenderer(getJetpackTexture("te5_enderium")));
+//        CuriosRendererRegistry.register(RegistryHandler.JETPACK_TE5.get(), () -> new JetpackRenderer(getJetpackTexture("te5")));
+        CuriosRendererRegistry.register(RegistryHandler.JETPACK_TE5_ARMORED.get(), () -> new JetpackRenderer(getJetpackTexture("te5_enderium")));
 
 //        CuriosRendererRegistry.register(RegistryHandler.JETPACK_IE1.get(), () -> new JetpackRenderer(getJetpackTexture("ie1")));
 //        CuriosRendererRegistry.register(RegistryHandler.JETPACK_IE1_ARMORED.get(), () -> new JetpackRenderer(getJetpackTexture("ie1_armored")));
@@ -85,10 +89,20 @@ public class CuriosIntegration {
                 return itemStack;
 
             }
-            @Override
-            public boolean canRightClickEquip() {
-                return true;
-            }
+
+//            @Override
+//            public void onEquip(SlotContext slotContext, ItemStack prevStack) {
+//                System.out.println("Equipping goggles");
+//                NetworkHandler.sendToClient(new PacketToggleHUD(true), (ServerPlayer) slotContext.getWearer());
+//                ICurio.super.onEquip(slotContext, prevStack);
+//            }
+//
+//            @Override
+//            public void onUnequip(SlotContext slotContext, ItemStack newStack) {
+//                System.out.println("Unequipping goggles");
+//                NetworkHandler.sendToClient(new PacketToggleHUD(false), (ServerPlayer) slotContext.getWearer());
+//                ICurio.super.onUnequip(slotContext, newStack);
+//            }
         });
     }
 

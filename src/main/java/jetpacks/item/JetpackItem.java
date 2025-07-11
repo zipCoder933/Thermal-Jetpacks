@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import jetpacks.energy.EnergyStorageImpl;
 import jetpacks.energy.IEnergyContainer;
 import jetpacks.handlers.CommonJetpackHandler;
-import jetpacks.handlers.RegistryHandler;
+import jetpacks.RegistryHandler;
 import jetpacks.ui.IHUDInfoProvider;
 
 import javax.annotation.Nonnull;
@@ -43,7 +43,8 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
     public final boolean isCreative;
 
     public JetpackItem(JetpackType jetpackType, boolean isCreative) {
-        super(jetpackType.isArmored() ? JetpackArmorMaterial.JETPACK_ARMORED : JetpackArmorMaterial.JETPACK, Type.CHESTPLATE, new Properties().setNoRepair());
+        super(jetpackType.isArmored() ? JetpackArmorMaterial.JETPACK_ARMORED : JetpackArmorMaterial.JETPACK, Type.CHESTPLATE,
+                new Properties().setNoRepair());
 
         this.isCreative = isCreative;
         this.jetpackType = jetpackType;

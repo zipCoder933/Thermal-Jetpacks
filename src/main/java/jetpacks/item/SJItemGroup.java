@@ -1,7 +1,5 @@
 package jetpacks.item;
 
-import io.netty.util.internal.SocketUtils;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -9,7 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.registries.RegistryObject;
-import jetpacks.handlers.RegistryHandler;
+import jetpacks.RegistryHandler;
 
 import static jetpacks.ThermalJetpacks.MOD_ID;
 

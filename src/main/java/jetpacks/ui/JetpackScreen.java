@@ -1,7 +1,7 @@
 package jetpacks.ui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import jetpacks.handlers.KeybindForgeBusHandler;
+import jetpacks.handlers.KeybindHandler;
 import jetpacks.item.JetpackItem;
 import jetpacks.network.NetworkHandler;
 import jetpacks.network.packets.*;
@@ -160,7 +160,7 @@ public class JetpackScreen extends Screen {
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (KeybindForgeBusHandler.JETPACK_GUI_KEY.matches(keyCode, scanCode) || minecraft.options.keyInventory.matches(keyCode, scanCode)) {
+        if (KeybindHandler.JETPACK_GUI_KEY.matches(keyCode, scanCode) || minecraft.options.keyInventory.matches(keyCode, scanCode)) {
             minecraft.setScreen(null);
             return true;
         }

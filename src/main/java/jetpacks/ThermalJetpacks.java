@@ -3,21 +3,17 @@ package jetpacks;
 import jetpacks.config.SimplyJetpacksConfig;
 import jetpacks.handlers.ClientJetpackHandler;
 import jetpacks.handlers.CommonJetpackHandler;
-import jetpacks.handlers.KeybindForgeBusHandler;
-import jetpacks.handlers.RegistryHandler;
+import jetpacks.handlers.KeybindHandler;
 import jetpacks.integration.CuriosIntegration;
 import jetpacks.item.JetpackItem;
 import jetpacks.item.PilotGogglesItem;
 import jetpacks.item.SJItemGroup;
 import jetpacks.network.NetworkHandler;
 import jetpacks.ui.HUDHandler;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -173,7 +169,7 @@ Tab Title: itemGroup.tjetpacks.main
 
         LOGGER.info("Client Setup Method registered.");
 
-        MinecraftForge.EVENT_BUS.register(new KeybindForgeBusHandler());
+        MinecraftForge.EVENT_BUS.register(new KeybindHandler());
         MinecraftForge.EVENT_BUS.register(new ClientJetpackHandler());
         MinecraftForge.EVENT_BUS.register(new HUDHandler());
 

@@ -1,6 +1,6 @@
 package jetpacks.datagen;
 
-import jetpacks.handlers.RegistryHandler;
+import jetpacks.RegistryHandler;
 import jetpacks.item.JetpackItem;
 import jetpacks.item.JetpackType;
 import net.minecraft.advancements.Advancement;

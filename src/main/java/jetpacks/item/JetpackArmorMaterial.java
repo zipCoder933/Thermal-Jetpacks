@@ -33,7 +33,8 @@ public enum JetpackArmorMaterial implements ArmorMaterial {
 	private final float knockbackResistance;
 	private static final int[] max_damage_array = new int[] {13, 15, 16, 11};
 
-	JetpackArmorMaterial(String name, int durability, int[] defense, int enchantability, Supplier<Ingredient> repairIngredient, String equipSound, float toughness, float knockbackResistance) {
+	JetpackArmorMaterial(String name, int durability, int[] defense, int enchantability,
+						 Supplier<Ingredient> repairIngredient, String equipSound, float toughness, float knockbackResistance) {
 		this.name = name;
 		this.durability = durability;
 		this.damageReductionAmounts = defense;

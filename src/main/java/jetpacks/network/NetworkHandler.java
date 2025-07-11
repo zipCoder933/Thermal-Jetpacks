@@ -61,6 +61,12 @@ public class NetworkHandler {
                 .decoder(PacketJetpackConfigSync::fromBytes)
                 .consumerNetworkThread(PacketJetpackConfigSync::handle)
                 .add();
+
+        CHANNEL_INSTANCE.messageBuilder(PacketToggleHUD.class, nextID())
+                .encoder(PacketToggleHUD::toBytes)
+                .decoder(PacketToggleHUD::fromBytes)
+                .consumerNetworkThread(PacketToggleHUD::handle)
+                .add();
     }
 
     public static void sendToClient(Object packet, ServerPlayer player) {

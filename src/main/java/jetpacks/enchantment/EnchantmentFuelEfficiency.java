@@ -4,7 +4,7 @@ import jetpacks.item.JetpackItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import jetpacks.handlers.RegistryHandler;
+import jetpacks.RegistryHandler;
 
 public class EnchantmentFuelEfficiency extends Enchantment {
 

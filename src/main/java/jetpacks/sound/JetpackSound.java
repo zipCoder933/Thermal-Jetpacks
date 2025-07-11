@@ -7,8 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import jetpacks.handlers.ClientJetpackHandler;
-import jetpacks.handlers.RegistryHandler;
+import jetpacks.RegistryHandler;
 
 import java.util.Collections;
 import java.util.HashMap;

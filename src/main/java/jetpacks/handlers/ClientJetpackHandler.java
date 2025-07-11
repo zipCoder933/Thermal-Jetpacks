@@ -19,10 +19,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+
 import java.util.Random;
 
 @OnlyIn(Dist.CLIENT)
 public class ClientJetpackHandler {
+
 
     @SubscribeEvent
     public void onClientPlayerQuit(final ClientPlayerNetworkEvent.LoggingOut loggedOutEvent) {
@@ -31,24 +33,22 @@ public class ClientJetpackHandler {
         ThermalJetpacks.LOGGER.info("Client jetpack config successfully reverted.");
     }
 
+    public static JetpackItem jetpackItem;
+    public static ItemStack jetpackItemStack;
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase == TickEvent.Phase.END) {
+        if (event.phase == TickEvent.Phase.END
+                && jetpackItemStack != null) {
+
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.player != null
                     && minecraft.level != null
-                    && !minecraft.isPaused()
                     && !minecraft.player.isSpectator()
                     && !minecraft.player.getAbilities().flying) {
 
-                ItemStack stack = JetpackUtil.getFromChest(minecraft.player);
-
-                Item item = stack.getItem();
-                if (!stack.isEmpty()
-                        && item instanceof JetpackItem jetpack
-                        && isJetpackFlying(minecraft.player, stack, jetpack)) {
-
+//                jetpackItem = JetpackUtil.getFromChest(minecraft.player);
+                if (isJetpackFlying(minecraft.player, jetpackItemStack, jetpackItem)) {
                     //Make particles
                     if (SimplyJetpacksConfig.enableJetpackParticles.get()
                             && (minecraft.options.particles().get() != ParticleStatus.MINIMAL)) {

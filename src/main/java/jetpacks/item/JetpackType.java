@@ -50,7 +50,7 @@ public enum JetpackType {
     TE4("te4", 4),
 //    TE4_ARMORED("te4_armored", 4, "te4", true, 14),
     TE5("te5", 5, "te5", true),
-//    TE5_ARMORED("te5_enderium", 5, "te5", true),
+    TE5_ARMORED("te5_enderium", 5, "te5", true),
     ;
 
     public static final EnumSet<JetpackType> JETPACK_ALL = EnumSet.allOf(JetpackType.class);
