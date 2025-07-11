@@ -56,10 +56,14 @@ public class JetpackModel<T extends LivingEntity> extends HumanoidModel<T> {
         this.rightExhaust2 = model.getChild("rightExhaust2");
     }
 
+    final static float yOffset = -1;
+    final static float xSeparation = 0.5f;
+
     public static LayerDefinition createLayer() {
         MeshDefinition mesh = HumanoidModel.createMesh(new CubeDeformation(1.0F), 0.0F);
         PartDefinition root = mesh.getRoot();
 
+        //The strap (belt)
         root.addOrReplaceChild("middle", CubeListBuilder.create().mirror()
                 .texOffs(0, 54)
                 .addBox(-2F, 3F, 3.6F, 4, 5, 2), PartPose.ZERO);
@@ -68,24 +72,25 @@ public class JetpackModel<T extends LivingEntity> extends HumanoidModel<T> {
         /**
          * Tip
          */
-        root.addOrReplaceChild("rightTip2", CubeListBuilder.create().mirror()
-                .texOffs(17, 49)
-                .addBox(-3.5F, -1F, 3.6F, 2, 2, 2), PartPose.ZERO);
-
         root.addOrReplaceChild("leftTip2", CubeListBuilder.create().mirror()
                 .texOffs(0, 49)
-                .addBox(1.5F, -1F, 3.6F, 2, 2, 2), PartPose.ZERO);
+                .addBox(1.5F + xSeparation, -1F + yOffset, 3.6F, 2, 2, 2), PartPose.ZERO);
+
+        root.addOrReplaceChild("rightTip2", CubeListBuilder.create().mirror()
+                .texOffs(17, 49)
+                .addBox(-3.5F - xSeparation, -1F + yOffset, 3.6F, 2, 2, 2), PartPose.ZERO);
+
 
         /**
          * Tip
          */
         root.addOrReplaceChild("leftTip1", CubeListBuilder.create().mirror()
                 .texOffs(0, 45)
-                .addBox(1F, 1.5F, 3.1F, 3, 1, 3), PartPose.ZERO);
+                .addBox(1F + xSeparation, 1.5F + yOffset, 3.1F, 3, 1, 3), PartPose.ZERO);
 
         root.addOrReplaceChild("rightTip1", CubeListBuilder.create().mirror()
                 .texOffs(17, 45)
-                .addBox(-4F, 1.5F, 3.1F, 3, 1, 3), PartPose.ZERO);
+                .addBox(-4F - xSeparation, 1.5F + yOffset, 3.1F, 3, 1, 3), PartPose.ZERO);
 
 
         /**
@@ -93,34 +98,35 @@ public class JetpackModel<T extends LivingEntity> extends HumanoidModel<T> {
          */
         root.addOrReplaceChild("leftCanister", CubeListBuilder.create().mirror()
                 .texOffs(0, 32)
-                .addBox(0.5F, 2F, 2.6F, 4, 7, 4), PartPose.ZERO);
+                .addBox(0.5F + xSeparation, 2F + yOffset, 2.6F, 4, 7, 4), PartPose.ZERO);
 
         root.addOrReplaceChild("rightCanister", CubeListBuilder.create().mirror()
                 .texOffs(17, 32)
-                .addBox(-4.5F, 2F, 2.6F, 4, 7, 4), PartPose.ZERO);
+                .addBox(-4.5F - xSeparation, 2F + yOffset, 2.6F, 4, 7, 4), PartPose.ZERO);
 
         /**
          * Exaust
          */
         root.addOrReplaceChild("leftExhaust1", CubeListBuilder.create().mirror()
                 .texOffs(35, 32)
-                .addBox(1F, 9F, 3.1F, 3, 1, 3), PartPose.ZERO);
+                .addBox(1F + xSeparation, 9F + yOffset, 3.1F, 3, 1, 3), PartPose.ZERO);
 
 
         root.addOrReplaceChild("rightExhaust1", CubeListBuilder.create().mirror()
                 .texOffs(48, 32)
-                .addBox(-4F, 9F, 3.1F, 3, 1, 3), PartPose.ZERO);
+                .addBox(-4F - xSeparation, 9F + yOffset, 3.1F, 3, 1, 3), PartPose.ZERO);
 
         /**
          * Exaust
          */
-        root.addOrReplaceChild("rightExhaust2", CubeListBuilder.create().mirror()
-                .texOffs(35, 45)
-                .addBox(-4.5F, 10F, 2.6F, 4, 4, 4), PartPose.ZERO);
-
         root.addOrReplaceChild("leftExhaust2", CubeListBuilder.create().mirror()
                 .texOffs(35, 37)
-                .addBox(0.5F, 10F, 2.6F, 4, 4, 4), PartPose.ZERO);
+                .addBox(0.5F + xSeparation, 10F + yOffset, 2.6F, 4, 4, 4), PartPose.ZERO);
+
+        root.addOrReplaceChild("rightExhaust2", CubeListBuilder.create().mirror()
+                .texOffs(35, 45)
+                .addBox(-4.5F - xSeparation, 10F + yOffset, 2.6F, 4, 4, 4), PartPose.ZERO);
+
 
         return LayerDefinition.create(mesh, 64, 64);
     }
