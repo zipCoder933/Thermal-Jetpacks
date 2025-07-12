@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "iti",
+    "ibi"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "minecraft:blaze_powder"
+    },
+    "t": {
+      "item": "tjetpacks:thruster_te2"
+    }
+  },
+  "result": {
+    "item": "tjetpacks:thruster_te2",
+    "count": 1
+  }
+}

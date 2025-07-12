@@ -57,11 +57,15 @@ public class JetpackModel<T extends LivingEntity> extends HumanoidModel<T> {
     }
 
     final static float yOffset = -1;
-    final static float xSeparation = 0.5f;
+    final static float xSeparation = 0.6f;
 
     public static LayerDefinition createLayer() {
-        MeshDefinition mesh = HumanoidModel.createMesh(new CubeDeformation(1.0F), 0.0F);
+        MeshDefinition mesh = HumanoidModel.createMesh(
+                new CubeDeformation(0.8F), //Armor scale
+                0F);//Vertical offset
+
         PartDefinition root = mesh.getRoot();
+
 
         //The strap (belt)
         root.addOrReplaceChild("middle", CubeListBuilder.create().mirror()
@@ -121,11 +125,11 @@ public class JetpackModel<T extends LivingEntity> extends HumanoidModel<T> {
          */
         root.addOrReplaceChild("leftExhaust2", CubeListBuilder.create().mirror()
                 .texOffs(35, 37)
-                .addBox(0.5F + xSeparation, 10F + yOffset, 2.6F, 4, 4, 4), PartPose.ZERO);
+                .addBox(0.5F + xSeparation, 10F + yOffset, 2.6F, 4, 5, 4), PartPose.ZERO);
 
         root.addOrReplaceChild("rightExhaust2", CubeListBuilder.create().mirror()
-                .texOffs(35, 45)
-                .addBox(-4.5F - xSeparation, 10F + yOffset, 2.6F, 4, 4, 4), PartPose.ZERO);
+                .texOffs(35, 46)
+                .addBox(-4.5F - xSeparation, 10F + yOffset, 2.6F, 4, 5, 4), PartPose.ZERO);
 
 
         return LayerDefinition.create(mesh, 64, 64);
