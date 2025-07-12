@@ -31,8 +31,9 @@ public class JetpackScreen extends Screen {
     private static final float LEAN_FACTOR = 2.0f;
 
     private final ResourceLocation JETPACK_TEXTURE = new ResourceLocation(MOD_ID, "textures/gui/jetpack_screen.png");
-    private static final int WIDTH = 176;
-    private static final int HEIGHT = 122;
+    private static final int WIDTH = 150;
+    private static final int HEIGHT = 144;
+    private static final int Y_UI_BELOW_TEXT = 20;
 
     private final JetpackItem jetpackItem;
     private final ItemStack jetpackStack;
@@ -41,7 +42,6 @@ public class JetpackScreen extends Screen {
     private ForgeSlider slider;
 
     public JetpackScreen() {
-        // TODO: test this
         super(Component.translatable("screen." + MOD_ID + ".jetpack_screen.title"));
         this.width = WIDTH;
         this.height = HEIGHT;
@@ -75,10 +75,12 @@ public class JetpackScreen extends Screen {
         assert player != null;
 
         NetworkHandler.sendToServer(new PacketUpdateClientJetpackUI());
-        int buttonsYOffset = HEIGHT / 2 - (42 / 2);
+
 
         if (item instanceof JetpackItem jetpack) {
-            engineButton = new ToggleImageButton(relX + 120, relY + buttonsYOffset, 20, 20, 176,
+            int y = Y_UI_BELOW_TEXT;
+            int x = WIDTH - 20 - 10;
+            engineButton = new ToggleImageButton(relX + x, relY + y, 20, 20, 176,
                     40, 20, 0, JETPACK_TEXTURE,
                     button -> {
 //                        boolean on = !jetpack.isEngineOn(jetpackStack);
@@ -87,8 +89,9 @@ public class JetpackScreen extends Screen {
             engineButton.setToggled(false);
             engineButton.setTooltip(Tooltip.create(Component.translatable("tooltip." + MOD_ID + ".engine_on")));
             addRenderableWidget(engineButton);
+            y += 22;
 
-            hoverButton = new ToggleImageButton(relX + 120, relY + 22 + buttonsYOffset, 20, 20, 216,
+            hoverButton = new ToggleImageButton(relX + x, relY + y, 20, 20, 216,
                     40, 20, 0, JETPACK_TEXTURE,
                     button -> {
 //                        boolean on = !jetpack.isEngineOn(jetpackStack);
@@ -98,9 +101,9 @@ public class JetpackScreen extends Screen {
             hoverButton.setTooltip(Tooltip.create(Component.translatable("tooltip." + MOD_ID + ".hover_on")));
             hoverButton.active = jetpack.getJetpackType().getHoverMode();
             addRenderableWidget(hoverButton);
+            y += 22;
 
-
-            chargerButton = new ToggleImageButton(relX + 142, relY + buttonsYOffset, 20, 20, 196,
+            chargerButton = new ToggleImageButton(relX + x, relY + y, 20, 20, 196,
                     40, 20, 0, JETPACK_TEXTURE,
                     button -> {
 //                        boolean on = !jetpack.isChargerOn(jetpackStack);
@@ -110,9 +113,9 @@ public class JetpackScreen extends Screen {
             chargerButton.setTooltip(Tooltip.create(Component.translatable("tooltip." + MOD_ID + ".charger_on")));
             chargerButton.active = jetpack.getJetpackType().getChargerMode();
             addRenderableWidget(chargerButton);
+            y += 22;
 
-
-            ehoverButton = new ToggleImageButton(relX + 142, relY + 22 + buttonsYOffset, 20, 20, 236,
+            ehoverButton = new ToggleImageButton(relX + x, relY + y, 20, 20, 236,
                     40, 20, 0, JETPACK_TEXTURE,
                     button -> {
 //                        boolean on = !jetpack.isEHoverOn(jetpackStack);
@@ -124,20 +127,29 @@ public class JetpackScreen extends Screen {
             addRenderableWidget(ehoverButton);
         }
 
-//        update(jetpackItem, jetpackStack);
-
-
-        addRenderableWidget(slider = new ForgeSlider(relX + 10, relY + 98, 152, 16,
+        addRenderableWidget(slider = new ForgeSlider(
+                relX + 10, relY + 118,
+                WIDTH - 20, 16,
                 Component.translatable("screen." + MOD_ID + ".throttle"),
                 Component.literal("%"), 0, 100,
                 jetpackItem.getThrottle(jetpackStack), true));
     }
+
+    final int barOffTextureStartX = 0;
+    final int barOnTextureStartX = 14;
+    final int barCreativeTextureStartX = 56;
+    final int barTexStartY = 170;
+    final int barXStart = 10;
+    final int barYStart = Y_UI_BELOW_TEXT;
+    final int barHeight = 86;
+    final int barWidth = 14;
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
         int relX = (this.width - WIDTH) / 2;
         int relY = (this.height - HEIGHT) / 2;
 
+        //Background
         RenderSystem.setShaderTexture(0, JETPACK_TEXTURE);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         graphics.blit(JETPACK_TEXTURE, relX, relY, 0, 0, WIDTH, HEIGHT);
@@ -148,56 +160,62 @@ public class JetpackScreen extends Screen {
         float angleX = -((mouseX - halfScreenWidth) / halfScreenWidth * LEAN_FACTOR);
         float angleY = -(((mouseY + 25) - halfScreenHeight) / halfScreenHeight * LEAN_FACTOR);
 
-        InventoryScreen.renderEntityInInventoryFollowsAngle(graphics, relX + 80, relY + 90, 40, angleX, angleY, minecraft.player);
-        graphics.drawCenteredString(minecraft.font, Component.translatable(jetpackStack.getDescriptionId()), relX + 88, relY + 5, 0xFFFFFF);
+        //Player
+        InventoryScreen.renderEntityInInventoryFollowsAngle(graphics, (relX + WIDTH / 2) - 4, relY + 100, 38, angleX, angleY, minecraft.player);
+
+        //Title
+//        graphics.drawCenteredString(minecraft.font, Component.translatable(jetpackStack.getDescriptionId()), relX + WIDTH / 2, relY + 5, 0xFFFFFF);
+
+        int textWidth = minecraft.font.width(Component.translatable(jetpackStack.getDescriptionId()));
+        graphics.drawString(minecraft.font, Component.translatable(jetpackStack.getDescriptionId()),
+                relX + (WIDTH - textWidth) / 2,
+                relY + 5, 0x303030, false);
+
         RenderSystem.setShaderTexture(0, JETPACK_TEXTURE);
 
+        //Slider
         NetworkHandler.sendToServer(new PacketUpdateThrottle(slider.getValueInt()));
 
-        int amount = getEnergyBarAmount(); // Texture height
-        int barOffset = 78 - amount;
-        int barX = 0;
-        boolean useGradient = false;
+        int amount = getEnergyBarAmount(barHeight); // Texture height
+        int barOffset = barHeight - amount;
 
-        if (jetpackItem.isCreative) {
-            graphics.blit(JETPACK_TEXTURE, relX + 10, relY + 16, 70, 178, 14, 78);
-        } else {
-            graphics.blit(JETPACK_TEXTURE, relX + 10, relY + 16, barX, 178, 14, 78);
-            if (useGradient) {
-                // Top left corner -> bottom right corner
-                graphics.fillGradient(relX + 12, relY + 18 + barOffset, relX + 22, relY + 14 + 78, 0xffb51500, 0xff600b00);
-            } else {
-                //matrixStack, xPos, yPos, textureXPos, textureYPos, textureWidth, textureHeight
-                //blit(matrixStack, relX + 10, relY + 14 + barOffset - 1, barX + 14, 178 + 1, 14, amount - 1);
-                graphics.blit(JETPACK_TEXTURE, relX + 10, relY + 16 + 1 + barOffset, barX + 14, 178 + 1, 14, amount - 2);
-            }
+        graphics.blit(JETPACK_TEXTURE, relX + barXStart, relY + barYStart,
+                jetpackItem.isCreative ? barCreativeTextureStartX : barOffTextureStartX
+                , barTexStartY, barWidth, barHeight);
+
+        if (!jetpackItem.isCreative) {
+//                graphics.fillGradient(relX + 12, relY + barYStart + 2 + barOffset,
+//                        relX + 22, relY + 14 + barHeight, 0xffb51500, 0xff600b00);
+
+            graphics.blit(JETPACK_TEXTURE, relX + barXStart, relY + barYStart + 1 + barOffset,
+                    barOnTextureStartX, barTexStartY + 1, barWidth, amount - 2);
         }
         // This does not update like a screen container :(
-        if (mouseX >= relX + 10 && mouseY >= relY + 16 && mouseX < relX + 10 + 14 && mouseY < relY + 16 + 78) {
+        if (mouseX >= relX + barXStart && mouseY >= relY + barYStart && mouseX < relX + barXStart + barWidth && mouseY < relY + barYStart + barHeight) {
             Component text;
-            //text = SJTextUtil.energyWithMax(jetpackItem.getEnergy(jetpackStack), jetpackItem.getCapacity(jetpackStack));
             if (jetpackItem.isCreative) {
                 text = SJTextUtil.translate("tooltip", "infiniteEnergy", ChatFormatting.LIGHT_PURPLE);
             } else if (jetpackItem.getEnergy(jetpackStack) == 0) {
                 text = SJTextUtil.translate("hud", "energyDepleted", ChatFormatting.RED);
-            } else text = null;
-            if (text != null) {
-                graphics.renderTooltip(font, text, mouseX, mouseY);
+            } else {
+                text = SJTextUtil.energyWithMax(jetpackItem.getEnergy(jetpackStack), jetpackItem.getCapacity(jetpackStack));
             }
+
+            if (text != null) graphics.renderTooltip(font, text, mouseX, mouseY);
         }
         super.render(graphics, mouseX, mouseY, partialTicks);
     }
 
-    private int getEnergyBarAmount() {
+    private int getEnergyBarAmount(int barHeight) {
         Item item = jetpackStack.getItem();
         if (item instanceof JetpackItem) {
             JetpackItem jetpack = (JetpackItem) item;
             if (jetpack.isCreative) {
-                return 78;
+                return barHeight;
             }
             int i = jetpack.getEnergy(jetpackStack);
             int j = jetpack.getCapacity(jetpackStack);
-            return (int) (j != 0 && i != 0 ? (long) i * 78 / j : 0);
+            return (int) (j != 0 && i != 0 ? (long) i * barHeight / j : 0);
         }
         return 0;
     }

@@ -3,6 +3,14 @@
   "itemGroup.tjetpacksitems": "Jetpack Items",
   "key.tjetpacks.default": "Jetpack Keybindings",
 
+
+  "screen.tjetpacks.jetpack_screen.title": "Jetpack Menu",
+  "tooltip.tjetpacks.engine_on": "Engine On/Off",
+  "tooltip.tjetpacks.hover_on": "Hover On/Off",
+  "tooltip.tjetpacks.ehover_on": "Emergency Hover On/Off",
+  "tooltip.tjetpacks.charger_on": "Charger On/Off",
+  "tooltip.tjetpacks.hover_on": "Hover On/Off",
+
   "item.tjetpacks.particle_blend": "Particle Blend",
   "item.tjetpacks.particle_none": "Particle Customizer (None)",
   "item.tjetpacks.particle_flame": "Particle Customizer (Flame)",
@@ -264,8 +272,6 @@
   "curios.identifier.jetpack": "Jetpack",
 
   "death.attack.tjetpacks.jetpack_potato": "%1$s attempted to fly a potato!",
-  "death.attack.tjetpacks.jetpack_explode": "%1$s spontaneously detonated!",
-
-  "screen.tjetpacks.jetpack_screen.title": "Jetpack GUI"
+  "death.attack.tjetpacks.jetpack_explode": "%1$s spontaneously detonated!"
   
 }
