@@ -12,7 +12,9 @@ import static jetpacks.ThermalJetpacks.MOD_ID;
 
 public enum JetpackType {
 
-//    POTATO("potato", 1, true),
+    /**
+     * Jetpack type is an enum containing all jetpacks.
+     */
     CREATIVE("creative", 5, true),
     CREATIVE_ARMORED("creative_armored", 5, "creative", true, true),
 
@@ -24,14 +26,12 @@ public enum JetpackType {
 //    VANILLA3_ARMORED("vanilla3_armored", 3, "vanilla3", true, 2),
 //    VANILLA4("vanilla4", 4),
 //    VANILLA4_ARMORED("vanilla4_armored", 4, "vanilla4", true, 3),
-//
 //    IE1("ie1", 1),
 //    IE1_ARMORED("ie1_armored", 1, "ie1", true, 4),
 //    IE2("ie2", 2),
 //    IE2_ARMORED("ie2_armored", 2, "ie2", true, 5),
 //    IE3("ie3", 3),
 //    IE3_ARMORED("ie3_armored", 3, "ie3", true, 6),
-//
 //    MEK1("mek1", 1),
 //    MEK1_ARMORED("mek1_armored", 1, "mek1", true, 7),
 //    MEK2("mek2", 2),
@@ -42,23 +42,26 @@ public enum JetpackType {
 //    MEK4_ARMORED("mek4_armored", 4, "mek4", true, 10),
 
     TE1("te1", 1),
-//    TE1_ARMORED("te1_armored", 1, "te1", true, 11),
+    //    TE1_ARMORED("te1_armored", 1, "te1", true, 11),
     TE2("te2", 2),
-//    TE2_ARMORED("te2_armored", 2, "te2", true, 12),
+    //    TE2_ARMORED("te2_armored", 2, "te2", true, 12),
     TE3("te3", 3),
-//    TE3_ARMORED("te3_armored", 3, "te3", true, 13),
+    //    TE3_ARMORED("te3_armored", 3, "te3", true, 13),
     TE4("te4", 4),
-//    TE4_ARMORED("te4_armored", 4, "te4", true, 14),
+    //    TE4_ARMORED("te4_armored", 4, "te4", true, 14),
     TE5("te5", 5, "te5", true),
     TE5_ARMORED("te5_enderium", 5, "te5", true),
     ;
 
+
+    /**
+     * Our config data (comes from the config file, from the server).
+     */
     public static final EnumSet<JetpackType> JETPACK_ALL = EnumSet.allOf(JetpackType.class);
 
     private final String name;
     private final String configKey;
     private final boolean armored;
-    private final int platingId;
     private final ResourceLocation armorTexture;
     private final int tier;
     private final boolean noAdvancements;
@@ -107,8 +110,7 @@ public enum JetpackType {
         this.tier = tier;
         this.configKey = configKey;
         this.armored = armored;
-        this.platingId = platingId;
-        this.armorTexture = new ResourceLocation((""+MOD_ID+":textures/models/armor/jetpack_" + name + ".png"));
+        this.armorTexture = new ResourceLocation(("" + MOD_ID + ":textures/models/armor/jetpack_" + name + ".png"));
         this.noAdvancements = noAdvancements;
     }
 
@@ -124,9 +126,6 @@ public enum JetpackType {
         return armored;
     }
 
-    public int getPlatingId() {
-        return platingId;
-    }
 
     public String getArmorTexture() {
         return armorTexture.toString();
@@ -292,10 +291,6 @@ public enum JetpackType {
     }
 
     public static int getDefaultParticles(ItemStack stack) {
-        JetpackItem item = (JetpackItem) stack.getItem();
-//        if (item.isCreative() || item.getJetpackType().getName().equals("potato")) {
-//            return JetpackParticleType.RAINBOW.ordinal();
-//        }
         return JetpackParticleType.CLOUD.ordinal();
     }
 

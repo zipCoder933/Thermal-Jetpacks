@@ -59,34 +59,34 @@ public class KeybindHandler {
         if (player == null || event.getAction() != InputConstants.PRESS || Minecraft.getInstance().screen != null) {
             return;
         }
-        ItemStack chestStack = JetpackUtil.getFromChestAndCurios(player);
-        Item chestItem = null;
+        ItemStack jetpackStack = JetpackUtil.getFromChestAndCurios(player);
+        Item jetpackItem = null;
         JetpackItem jetpack;
-        if (!chestStack.isEmpty()) {
-            chestItem = chestStack.getItem();
+        if (!jetpackStack.isEmpty()) {
+            jetpackItem = jetpackStack.getItem();
         }
-        if (chestItem instanceof JetpackItem) {
-            jetpack = (JetpackItem) chestItem;
+        if (jetpackItem instanceof JetpackItem) {
+            jetpack = (JetpackItem) jetpackItem;
             if (JETPACK_GUI_KEY.getKey().getValue() == event.getKey()) {
                 Minecraft.getInstance().setScreen(new JetpackScreen());
             }
             if (JETPACK_ENGINE_KEY.getKey().getValue() == event.getKey()) {
-                NetworkHandler.sendToServer(new PacketToggleEngine());
+                NetworkHandler.sendToServer(new PacketSetEngine(ToggleStatus.TOGGLE));
             }
             if (JETPACK_HOVER_KEY.getKey().getValue() == event.getKey()) {
-                NetworkHandler.sendToServer(new PacketToggleHover());
+                NetworkHandler.sendToServer(new PacketSetHover(ToggleStatus.TOGGLE));
             }
             if (JETPACK_EHOVER_KEY.getKey().getValue() == event.getKey()) {
-                NetworkHandler.sendToServer(new PacketToggleEHover());
+                NetworkHandler.sendToServer(new PacketSetEHover(ToggleStatus.TOGGLE));
             }
             if (JETPACK_CHARGER_KEY.getKey().getValue() == event.getKey()) {
-                NetworkHandler.sendToServer(new PacketToggleCharger());
+                NetworkHandler.sendToServer(new PacketSetCharger(ToggleStatus.TOGGLE));
             }
             if (JETPACK_THROTTLE_INCREASE.getKey().getValue() == event.getKey()) {
-                NetworkHandler.sendToServer(new PacketUpdateThrottle(Math.max(0, Math.min(100, jetpack.getThrottle(chestStack) + 10))));
+                NetworkHandler.sendToServer(new PacketUpdateThrottle(Math.max(0, Math.min(100, jetpack.getThrottle(jetpackStack) + 10))));
             }
             if (JETPACK_THROTTLE_DECREASE.getKey().getValue() == event.getKey()) {
-                NetworkHandler.sendToServer(new PacketUpdateThrottle(Math.max(0, Math.min(100, jetpack.getThrottle(chestStack) - 10))));
+                NetworkHandler.sendToServer(new PacketUpdateThrottle(Math.max(0, Math.min(100, jetpack.getThrottle(jetpackStack) - 10))));
             }
         }
     }

@@ -154,6 +154,10 @@ public class SimplyJetpacksConfig {
         SERVER_BUILDER.pop();
     }
 
+    /**
+     * Send the config data from the server to the client
+     * @param player
+     */
     public static void sendServerConfigFiles(Player player) {
         JetpackType.loadAllConfigs();
         for (JetpackType jetpack : JetpackType.JETPACK_ALL) {

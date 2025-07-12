@@ -21,27 +21,27 @@ public class NetworkHandler {
     public static void registerMessages() {
         CHANNEL_INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, MOD_ID), () -> "1.0", s -> true, s -> true);
 
-        CHANNEL_INSTANCE.messageBuilder(PacketToggleEngine.class, nextID())
-                .encoder(PacketToggleEngine::toBytes)
-                .decoder(PacketToggleEngine::new)
-                .consumerNetworkThread(PacketToggleEngine::handle)
+        CHANNEL_INSTANCE.messageBuilder(PacketSetEngine.class, nextID())
+                .encoder(PacketSetEngine::toBytes)
+                .decoder(PacketSetEngine::new)
+                .consumerNetworkThread(PacketSetEngine::handle)
                 .add();
-        CHANNEL_INSTANCE.messageBuilder(PacketToggleHover.class, nextID())
-                .encoder(PacketToggleHover::toBytes)
-                .decoder(PacketToggleHover::new)
-                .consumerNetworkThread(PacketToggleHover::handle)
-                .add();
-
-        CHANNEL_INSTANCE.messageBuilder(PacketToggleEHover.class, nextID())
-                .encoder(PacketToggleEHover::toBytes)
-                .decoder(PacketToggleEHover::new)
-                .consumerNetworkThread(PacketToggleEHover::handle)
+        CHANNEL_INSTANCE.messageBuilder(PacketSetHover.class, nextID())
+                .encoder(PacketSetHover::toBytes)
+                .decoder(PacketSetHover::new)
+                .consumerNetworkThread(PacketSetHover::handle)
                 .add();
 
-        CHANNEL_INSTANCE.messageBuilder(PacketToggleCharger.class, nextID())
-                .encoder(PacketToggleCharger::toBytes)
-                .decoder(PacketToggleCharger::new)
-                .consumerNetworkThread(PacketToggleCharger::handle)
+        CHANNEL_INSTANCE.messageBuilder(PacketSetEHover.class, nextID())
+                .encoder(PacketSetEHover::toBytes)
+                .decoder(PacketSetEHover::new)
+                .consumerNetworkThread(PacketSetEHover::handle)
+                .add();
+
+        CHANNEL_INSTANCE.messageBuilder(PacketSetCharger.class, nextID())
+                .encoder(PacketSetCharger::toBytes)
+                .decoder(PacketSetCharger::new)
+                .consumerNetworkThread(PacketSetCharger::handle)
                 .add();
 
         CHANNEL_INSTANCE.messageBuilder(PacketUpdateInput.class, nextID())
@@ -66,6 +66,12 @@ public class NetworkHandler {
                 .encoder(PacketToggleHUD::toBytes)
                 .decoder(PacketToggleHUD::fromBytes)
                 .consumerNetworkThread(PacketToggleHUD::handle)
+                .add();
+
+        CHANNEL_INSTANCE.messageBuilder(PacketUpdateClientJetpackUI.class, nextID())
+                .encoder(PacketUpdateClientJetpackUI::toBytes)
+                .decoder(PacketUpdateClientJetpackUI::fromBytes)
+                .consumerNetworkThread(PacketUpdateClientJetpackUI::handle)
                 .add();
     }
 

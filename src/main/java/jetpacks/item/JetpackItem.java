@@ -122,10 +122,9 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         return NBTUtil.getBoolean(stack, Constants.TAG_ENGINE);
     }
 
-    public void toggleEngine(ItemStack stack, Player player) {
-        boolean current = NBTUtil.getBoolean(stack, Constants.TAG_ENGINE);
+    public void setEngineOn(ItemStack stack, Player player, boolean engineOn) {
         NBTUtil.flipBoolean(stack, Constants.TAG_ENGINE);
-        Component msg = SJTextUtil.getStateToggle("engineMode", !current);
+        Component msg = SJTextUtil.getStateToggle("engineMode", engineOn);
         player.displayClientMessage(msg, true);
     }
 
@@ -133,11 +132,10 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         return NBTUtil.getBoolean(stack, Constants.TAG_HOVER);
     }
 
-    public void toggleHover(ItemStack stack, Player player) {
+    public void setHoverOn(ItemStack stack, Player player, boolean hoverOn) {
         if (jetpackType.getHoverMode()) {
-            boolean current = NBTUtil.getBoolean(stack, Constants.TAG_HOVER);
             NBTUtil.flipBoolean(stack, Constants.TAG_HOVER);
-            Component msg = SJTextUtil.getStateToggle("hoverMode", !current);
+            Component msg = SJTextUtil.getStateToggle("hoverMode", hoverOn);
             player.displayClientMessage(msg, true);
         }
     }
@@ -146,11 +144,10 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         return NBTUtil.getBoolean(stack, Constants.TAG_E_HOVER);
     }
 
-    public void toggleEHover(ItemStack stack, Player player) {
+    public void setEHoverOn(ItemStack stack, Player player, boolean eHoverOn) {
         if (jetpackType.getEmergencyHoverMode()) {
-            boolean current = NBTUtil.getBoolean(stack, Constants.TAG_E_HOVER);
             NBTUtil.flipBoolean(stack, Constants.TAG_E_HOVER);
-            Component msg = SJTextUtil.getStateToggle("emergencyHoverMode", !current);
+            Component msg = SJTextUtil.getStateToggle("emergencyHoverMode", eHoverOn);
             player.displayClientMessage(msg, true);
         }
     }
@@ -168,11 +165,10 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         return NBTUtil.getBoolean(stack, Constants.TAG_CHARGER);
     }
 
-    public void toggleCharger(ItemStack stack, Player player) {
+    public void setChargerOn(ItemStack stack, Player player,boolean chargerOn) {
         if (jetpackType.getChargerMode()) {
-            boolean current = NBTUtil.getBoolean(stack, Constants.TAG_CHARGER);
             NBTUtil.flipBoolean(stack, Constants.TAG_CHARGER);
-            Component msg = SJTextUtil.getStateToggle("chargerMode", !current);
+            Component msg = SJTextUtil.getStateToggle("chargerMode", chargerOn);
             player.displayClientMessage(msg, true);
         }
     }

@@ -1,13 +1,7 @@
 package jetpacks.network.packets;
 
-import jetpacks.item.JetpackItem;
 import jetpacks.ui.HUDHandler;
-import jetpacks.util.JetpackUtil;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;

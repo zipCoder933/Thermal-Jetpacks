@@ -1,6 +1,7 @@
 package jetpacks.network.packets;
 
 import jetpacks.item.JetpackItem;
+import jetpacks.network.NetworkHandler;
 import jetpacks.util.JetpackUtil;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -10,15 +11,19 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class PacketToggleHover {
+public class PacketSetEngine {
+    final ToggleStatus status;
 
-    public PacketToggleHover(FriendlyByteBuf buf) {
+    public PacketSetEngine(FriendlyByteBuf buf) {
+        status = buf.readEnum(ToggleStatus.class);
     }
 
     public void toBytes(FriendlyByteBuf buf) {
+        buf.writeEnum(status);
     }
 
-    public PacketToggleHover() {
+    public PacketSetEngine(ToggleStatus status) {
+        this.status = status;
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
@@ -27,9 +32,11 @@ public class PacketToggleHover {
             if (player != null) {
                 ItemStack stack = JetpackUtil.getFromChestAndCurios(player);
                 Item item = stack.getItem();
-                if (item instanceof JetpackItem) {
-                    JetpackItem jetpack = (JetpackItem) item;
-                    jetpack.toggleHover(stack, player);
+                if (item instanceof JetpackItem jetpack) {
+                    if (status == ToggleStatus.TOGGLE) jetpack.setEngineOn(stack, player, !jetpack.isEngineOn(stack));
+                    else if (status == ToggleStatus.ON) jetpack.setEngineOn(stack, player, true);
+                    //Send the status back to the client
+                    NetworkHandler.sendToClient(new PacketUpdateClientJetpackUI(jetpack, stack), player);
                 }
             }
         });

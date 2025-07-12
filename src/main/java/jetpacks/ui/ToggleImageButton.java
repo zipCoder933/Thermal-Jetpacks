@@ -21,6 +21,10 @@ public class ToggleImageButton extends ImageButton {
         isOn = !isOn;
     }
 
+    public void setToggled(boolean on) {
+        isOn = on;
+    }
+
     public boolean isOn() {
         return isOn;
     }
@@ -32,4 +36,6 @@ public class ToggleImageButton extends ImageButton {
                 this.yDiffTex,
                 this.width, this.height, this.textureWidth, this.textureHeight);
     }
+
+
 }

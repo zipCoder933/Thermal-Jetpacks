@@ -104,7 +104,8 @@ public class PacketJetpackConfigSync {
         ctx.get().enqueueWork(() -> {
             if(ctx.get().getDirection() == NetworkDirection.PLAY_TO_CLIENT) {
                 // This is not ideal but would require a pretty significant rewrite to make this better.
-                Optional<JetpackType> jetpackTypeOptional = JetpackType.JETPACK_ALL.stream().filter(jetpack -> jetpack.getConfigKey().equals(message.configKey)).findFirst();
+                Optional<JetpackType> jetpackTypeOptional = JetpackType.JETPACK_ALL.stream()
+                        .filter(jetpack -> jetpack.getConfigKey().equals(message.configKey)).findFirst();
 
                 if(jetpackTypeOptional.isPresent()) {
                     JetpackType jetpack = jetpackTypeOptional.get();
