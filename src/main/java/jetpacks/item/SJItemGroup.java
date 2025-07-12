@@ -16,7 +16,7 @@ public class SJItemGroup extends CreativeModeTab {
     public SJItemGroup() {
         super(CreativeModeTab.builder()
                 .title(Component.translatable("itemGroup." + MOD_ID + ".main"))
-                .icon(() -> new ItemStack(RegistryHandler.JETPACK_CREATIVE.get()))
+                .icon(() -> new ItemStack(RegistryHandler.JETPACK_CREATIVE_ARMORED.get()))
                 // I have *zero* clue why this is required for this mod _exclusively_ but I don't care enough to figure out, why.
                 .withBackgroundLocation(new ResourceLocation("minecraft", "textures/gui/container/creative_inventory/tab_items.png"))
                 .displayItems((params, output) -> {

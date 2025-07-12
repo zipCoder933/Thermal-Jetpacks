@@ -30,7 +30,7 @@ public class SJAdvancementProvider implements AdvancementSubProvider {
     public void generate(HolderLookup.Provider provider, Consumer<Advancement> consumer) {
         Advancement root = Advancement.Builder.advancement().display(
                 new DisplayInfo(
-                        new ItemStack(RegistryHandler.JETPACK_CREATIVE.get()),
+                        new ItemStack(RegistryHandler.JETPACK_CREATIVE_ARMORED.get()),
                         Component.translatable("advancement.simplyjetpacks.root.title"),
                         Component.translatable("advancement.simplyjetpacks.root.description"),
                         new ResourceLocation("minecraft", "textures/gui/advancements/backgrounds/stone.png"),

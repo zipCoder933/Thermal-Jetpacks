@@ -11,6 +11,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
@@ -36,52 +37,76 @@ public class JetpackScreen extends Screen {
     private final JetpackItem jetpackItem;
     private final ItemStack jetpackStack;
 
-    private ImageButton engine, hover, ehover, charger;
+    private ImageButton engineButton, hoverButton, ehoverButton, chargerButton;
     private ForgeSlider slider;
 
     public JetpackScreen() {
         // TODO: test this
-        super(Component.translatable("screen."+MOD_ID+".jetpack_screen.title"));
+        super(Component.translatable("screen." + MOD_ID + ".jetpack_screen.title"));
         this.width = WIDTH;
         this.height = HEIGHT;
         this.jetpackItem = (JetpackItem) JetpackUtil.getFromChestAndCurios(minecraft.player).getItem();
         this.jetpackStack = JetpackUtil.getFromChestAndCurios(minecraft.player);
     }
 
+    boolean engineToggled = false;
+
+
     @Override
     protected void init() {
         int relX = (this.width - WIDTH) / 2;
         int relY = (this.height - HEIGHT) / 2;
 
-        addRenderableWidget(this.engine = new ImageButton(relX + 120, relY + 16, 20, 20, 176, 0, 20, JETPACK_TEXTURE, button -> NetworkHandler.sendToServer(new PacketToggleEngine())));
-        //addRenderableWidget(this.hover = new ImageButton(relX + 120, relY + 38, 20, 20, 216, 0, 20, JETPACK_TEXTURE, button -> NetworkHandler.sendToServer(new PacketToggleHover())));
+        this.engineButton = new ToggleImageButton(relX + 120, relY + 16, 20, 20, 176,
+                40, 20, 0, JETPACK_TEXTURE,
+                button -> {
+                    NetworkHandler.sendToServer(new PacketToggleEngine());
+                    ((ToggleImageButton) button).toggle();
+                });
+        addRenderableWidget(engineButton);
 
         Item item = jetpackStack.getItem();
-        if (item instanceof JetpackItem) {
-            JetpackItem jetpack = (JetpackItem) item;
+        if (item instanceof JetpackItem jetpack) {
             if (jetpack.getJetpackType().getHoverMode()) {
-                addRenderableWidget(this.hover = new ImageButton(relX + 120, relY + 38, 20, 20, 216, 0, 20, JETPACK_TEXTURE, button -> NetworkHandler.sendToServer(new PacketToggleHover())));
-                this.hover.active = true;
+                this.hoverButton = new ImageButton(relX + 120, relY + 38, 20, 20, 216,
+                        0, 20, JETPACK_TEXTURE,
+                        button -> NetworkHandler.sendToServer(new PacketToggleHover()));
+                this.hoverButton.active = true;
             } else {
-                addRenderableWidget(this.hover = new ImageButton(relX + 120, relY + 38, 20, 20, 196, 40, 0, JETPACK_TEXTURE, button -> NetworkHandler.sendToServer(new PacketToggleHover())));
-                this.hover.active = false;
+                new ImageButton(relX + 120, relY + 38, 20, 20, 196,
+                        40, 0, JETPACK_TEXTURE,
+                        button -> NetworkHandler.sendToServer(new PacketToggleHover()));
+                this.hoverButton.active = false;
             }
+            addRenderableWidget(hoverButton);
+
             if (jetpack.getJetpackType().getChargerMode()) {
-                addRenderableWidget(this.charger = new ImageButton(relX + 142, relY + 16, 20, 20, 196, 0, 20, JETPACK_TEXTURE, button -> NetworkHandler.sendToServer(new PacketToggleCharger())));
-                this.charger.active = true;
+                this.chargerButton = new ImageButton(relX + 142, relY + 16, 20, 20, 196,
+                        0, 20, JETPACK_TEXTURE,
+                        button -> NetworkHandler.sendToServer(new PacketToggleCharger()));
+                this.chargerButton.active = true;
             } else {
-                addRenderableWidget(this.charger = new ImageButton(relX + 142, relY + 16, 20, 20, 196, 40, 0, JETPACK_TEXTURE, button -> NetworkHandler.sendToServer(new PacketToggleCharger())));
-                this.charger.active = false;
+                this.chargerButton = new ImageButton(relX + 142, relY + 16, 20, 20, 196,
+                        40, 0, JETPACK_TEXTURE,
+                        button -> NetworkHandler.sendToServer(new PacketToggleCharger()));
+                this.chargerButton.active = false;
             }
+            addRenderableWidget(chargerButton);
+
             if (jetpack.getJetpackType().getEmergencyHoverMode()) {
-                addRenderableWidget(this.ehover = new ImageButton(relX + 142, relY + 38, 20, 20, 236, 0, 20, JETPACK_TEXTURE, button -> NetworkHandler.sendToServer(new PacketToggleEHover())));
-                this.ehover.active = true;
+                this.ehoverButton = new ImageButton(relX + 142, relY + 38, 20, 20, 236,
+                        0, 20, JETPACK_TEXTURE,
+                        button -> NetworkHandler.sendToServer(new PacketToggleEHover()));
+                this.ehoverButton.active = true;
             } else {
-                addRenderableWidget(this.ehover = new ImageButton(relX + 142, relY + 38, 20, 20, 236, 40, 0, JETPACK_TEXTURE, button -> NetworkHandler.sendToServer(new PacketToggleEHover())));
-                this.ehover.active = false;
+                this.ehoverButton = new ImageButton(relX + 142, relY + 38, 20, 20, 236,
+                        40, 0, JETPACK_TEXTURE,
+                        button -> NetworkHandler.sendToServer(new PacketToggleEHover()));
+                this.ehoverButton.active = false;
             }
+            addRenderableWidget(ehoverButton);
         }
-        addRenderableWidget(slider = new ForgeSlider(relX + 10, relY + 98, 152, 16, Component.translatable("screen."+MOD_ID+".throttle"), Component.literal("%"), 0, 100, jetpackItem.getThrottle(jetpackStack), true));
+        addRenderableWidget(slider = new ForgeSlider(relX + 10, relY + 98, 152, 16, Component.translatable("screen." + MOD_ID + ".throttle"), Component.literal("%"), 0, 100, jetpackItem.getThrottle(jetpackStack), true));
     }
 
     @Override

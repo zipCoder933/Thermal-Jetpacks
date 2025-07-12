@@ -66,7 +66,7 @@ public class RegistryHandler {
     public static final RegistryObject<SJItem> THRUSTER_TE2 = ITEMS.register("thruster_te2", SJItem::new);
     public static final RegistryObject<SJItem> THRUSTER_TE3 = ITEMS.register("thruster_te3", SJItem::new);
     public static final RegistryObject<SJItem> THRUSTER_TE4 = ITEMS.register("thruster_te4", SJItem::new);
-    public static final RegistryObject<SJItem> THRUSTER_TE5 = ITEMS.register("thruster_te5", SJItem::new);
+//    public static final RegistryObject<SJItem> THRUSTER_TE5 = ITEMS.register("thruster_te5", SJItem::new);
     public static final RegistryObject<SJItem> FLUX_CHESTPLATE = ITEMS.register("flux_chestplate", SJItem::new);
 
     public static final RegistryObject<JetpackItem> JETPACK_TE1 = ITEMS.register("jetpack_te1", () -> new JetpackItem(JetpackType.TE1, false));
