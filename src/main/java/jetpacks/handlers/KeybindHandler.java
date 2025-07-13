@@ -1,7 +1,7 @@
 package jetpacks.handlers;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import jetpacks.config.SimplyJetpacksConfig;
+import jetpacks.config.ModConfig;
 import jetpacks.item.JetpackItem;
 import jetpacks.network.NetworkHandler;
 import jetpacks.network.packets.*;
@@ -36,19 +36,19 @@ public class KeybindHandler {
 
     @SubscribeEvent
     public static void registerBindings(RegisterKeyMappingsEvent event) {
-        KeybindHandler.JETPACK_GUI_KEY = new KeyMapping("keybind.simplyjetpacks.jetpack_gui", GLFW.GLFW_KEY_K, "keybind.simplyjetpacks.category");
+        KeybindHandler.JETPACK_GUI_KEY = new KeyMapping("keybind.tjetpacks.jetpack_gui", GLFW.GLFW_KEY_K, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_GUI_KEY);
-        KeybindHandler.JETPACK_ENGINE_KEY = new KeyMapping("keybind.simplyjetpacks.jetpack_engine", GLFW.GLFW_KEY_J, "keybind.simplyjetpacks.category");
+        KeybindHandler.JETPACK_ENGINE_KEY = new KeyMapping("keybind.tjetpacks.jetpack_engine", GLFW.GLFW_KEY_J, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_ENGINE_KEY);
-        KeybindHandler.JETPACK_HOVER_KEY = new KeyMapping("keybind.simplyjetpacks.jetpack_hover", GLFW.GLFW_KEY_H, "keybind.simplyjetpacks.category");
+        KeybindHandler.JETPACK_HOVER_KEY = new KeyMapping("keybind.tjetpacks.jetpack_hover", GLFW.GLFW_KEY_H, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_HOVER_KEY);
-        KeybindHandler.JETPACK_EHOVER_KEY = new KeyMapping("keybind.simplyjetpacks.jetpack_ehover", GLFW.GLFW_KEY_UNKNOWN, "keybind.simplyjetpacks.category");
+        KeybindHandler.JETPACK_EHOVER_KEY = new KeyMapping("keybind.tjetpacks.jetpack_ehover", GLFW.GLFW_KEY_UNKNOWN, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_EHOVER_KEY);
-        KeybindHandler.JETPACK_CHARGER_KEY = new KeyMapping("keybind.simplyjetpacks.jetpack_charger", GLFW.GLFW_KEY_UNKNOWN, "keybind.simplyjetpacks.category");
+        KeybindHandler.JETPACK_CHARGER_KEY = new KeyMapping("keybind.tjetpacks.jetpack_charger", GLFW.GLFW_KEY_UNKNOWN, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_CHARGER_KEY);
-        KeybindHandler.JETPACK_THROTTLE_INCREASE = new KeyMapping("keybind.simplyjetpacks.jetpack_throttle_increase", GLFW.GLFW_KEY_PERIOD, "keybind.simplyjetpacks.category");
+        KeybindHandler.JETPACK_THROTTLE_INCREASE = new KeyMapping("keybind.tjetpacks.jetpack_throttle_increase", GLFW.GLFW_KEY_PERIOD, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_THROTTLE_INCREASE);
-        KeybindHandler.JETPACK_THROTTLE_DECREASE = new KeyMapping("keybind.simplyjetpacks.jetpack_throttle_decrease", GLFW.GLFW_KEY_COMMA, "keybind.simplyjetpacks.category");
+        KeybindHandler.JETPACK_THROTTLE_DECREASE = new KeyMapping("keybind.tjetpacks.jetpack_throttle_decrease", GLFW.GLFW_KEY_COMMA, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_THROTTLE_DECREASE);
     }
 
@@ -106,7 +106,7 @@ public class KeybindHandler {
             if (mc.player != null) {
                 //Update the state and send to server
                 boolean flyState = mc.player.input.jumping;
-                boolean invertHover = SimplyJetpacksConfig.invertHoverSneakingBehavior.get();
+                boolean invertHover = ModConfig.invertHoverSneakingBehavior.get();
                 boolean descendState = mc.player.input.shiftKeyDown;
                 boolean forwardState = mc.player.input.up;
                 boolean backwardState = mc.player.input.down;

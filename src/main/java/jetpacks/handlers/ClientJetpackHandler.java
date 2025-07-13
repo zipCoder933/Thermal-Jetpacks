@@ -1,18 +1,17 @@
 package jetpacks.handlers;
 
+import jetpacks.RegistryHandler;
 import jetpacks.ThermalJetpacks;
-import jetpacks.config.SimplyJetpacksConfig;
+import jetpacks.config.ModConfig;
 import jetpacks.item.JetpackItem;
 import jetpacks.item.JetpackType;
 import jetpacks.particle.JetpackParticleType;
-import jetpacks.sound.JetpackSound;
 import jetpacks.util.JetpackUtil;
 import jetpacks.util.Pos3D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.ParticleStatus;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -38,8 +37,7 @@ public class ClientJetpackHandler {
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase == TickEvent.Phase.END
-                && jetpackItemStack != null) {
+        if (event.phase == TickEvent.Phase.END && jetpackItemStack != null) {
 
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.player != null
@@ -47,18 +45,20 @@ public class ClientJetpackHandler {
                     && !minecraft.player.isSpectator()
                     && !minecraft.player.getAbilities().flying) {
 
-//                jetpackItem = JetpackUtil.getFromChest(minecraft.player);
+                //Make sure the jetpack is still here!
+                jetpackItemStack = JetpackUtil.getFromChest(minecraft.player);
+                if (jetpackItemStack == null) return;
+
                 if (isJetpackFlying(minecraft.player, jetpackItemStack, jetpackItem)) {
                     //Make particles
-                    if (SimplyJetpacksConfig.enableJetpackParticles.get()
+                    if (ModConfig.enableJetpackParticles.get()
                             && (minecraft.options.particles().get() != ParticleStatus.MINIMAL)) {
                         makeParticles(minecraft, JetpackParticleType.CLOUD);
                     }
 
                     // Play sounds:
-                    if (SimplyJetpacksConfig.enableJetpackSounds.get()
-                            && !JetpackSound.playing(minecraft.player.getId())) {
-                        minecraft.getSoundManager().play(new JetpackSound(minecraft.player));
+                    if (ModConfig.enableJetpackSounds.get() && !JetpackSoundEvent.playing(minecraft.player.getId())) {
+                        minecraft.getSoundManager().play(new JetpackSoundEvent(minecraft.player, RegistryHandler.SOUND_JETPACK_OTHER.get()));
                     }
                 }
             }

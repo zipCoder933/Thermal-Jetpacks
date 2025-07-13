@@ -62,10 +62,10 @@ public class NetworkHandler {
                 .consumerNetworkThread(PacketJetpackConfigSync::handle)
                 .add();
 
-        CHANNEL_INSTANCE.messageBuilder(PacketToggleHUD.class, nextID())
-                .encoder(PacketToggleHUD::toBytes)
-                .decoder(PacketToggleHUD::fromBytes)
-                .consumerNetworkThread(PacketToggleHUD::handle)
+        CHANNEL_INSTANCE.messageBuilder(PacketEnableJetpackHUD.class, nextID())
+                .encoder(PacketEnableJetpackHUD::toBytes)
+                .decoder(PacketEnableJetpackHUD::fromBytes)
+                .consumerNetworkThread(PacketEnableJetpackHUD::handle)
                 .add();
 
         CHANNEL_INSTANCE.messageBuilder(PacketUpdateClientJetpackUI.class, nextID())

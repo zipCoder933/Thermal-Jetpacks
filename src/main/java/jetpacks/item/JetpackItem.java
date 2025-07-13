@@ -165,7 +165,7 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         return NBTUtil.getBoolean(stack, Constants.TAG_CHARGER);
     }
 
-    public void setChargerOn(ItemStack stack, Player player,boolean chargerOn) {
+    public void setChargerOn(ItemStack stack, Player player, boolean chargerOn) {
         if (jetpackType.getChargerMode()) {
             NBTUtil.flipBoolean(stack, Constants.TAG_CHARGER);
             Component msg = SJTextUtil.getStateToggle("chargerMode", chargerOn);
@@ -229,11 +229,9 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         return full;
     }
 
-    // TODO: find where MathHelper went and remove this.
     public static int clamp(int min, int value, int max) {
         if (value < min) return min;
-        if (value > max) return max;
-        return value;
+        return Math.min(value, max);
     }
 
     private void setEnergyStored(ItemStack container, int value) {
@@ -310,6 +308,8 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         player.setDeltaMovement(motion.get(Direction.Axis.X), y, motion.get(Direction.Axis.Z));
     }
 
+    final float HOVER_FALL = 0.1f;
+
     @Override
     public boolean isEnchantable(ItemStack itemStack) {
         return itemStack.getItem() instanceof JetpackItem;
@@ -348,7 +348,7 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
                             if (descendKeyDown) {
                                 fly(player, Math.min(player.getDeltaMovement().get(Direction.Axis.Y) + currentAccel, -speedVerticalHoverSlow));
                             } else {
-                                fly(player, Math.min(player.getDeltaMovement().get(Direction.Axis.Y) + currentAccel, speedVerticalHover));
+                                fly(player, Math.min(player.getDeltaMovement().get(Direction.Axis.Y) + currentAccel, speedVerticalHover - HOVER_FALL));
                             }
                         }
                     } else {

@@ -174,7 +174,7 @@ public class JetpackDataHolder {
         //--------------------------------------------------------------------
 
         d = new JetpackDataHolder("te1", "thermal");
-        d.energyCapacity = 40000;
+        d.energyCapacity = 80000;
         d.energyUsage = 32;
         d.energyPerTickIn = 1500;
         d.armorReduction = 2;
@@ -192,7 +192,7 @@ public class JetpackDataHolder {
         d.chargerMode = false;
 
         d = new JetpackDataHolder("te2", "thermal");
-        d.energyCapacity = 350000;
+        d.energyCapacity = 400000;
         d.energyUsage = 50;
         d.energyPerTickIn = 8000;
         d.armorReduction = 4;
@@ -210,7 +210,7 @@ public class JetpackDataHolder {
         d.chargerMode = false;
 
         d = new JetpackDataHolder("te3", "thermal");
-        d.energyCapacity = 1200000;
+        d.energyCapacity = 2400000;
         d.energyUsage = 200;
         d.energyPerTickIn = 15000;
         d.armorReduction = 6;
@@ -228,17 +228,17 @@ public class JetpackDataHolder {
         d.chargerMode = false;
 
         d = new JetpackDataHolder("te4", "thermal");
-        d.energyCapacity = 5400000;
+        d.energyCapacity = 18000000;
         d.energyUsage = 450;
         d.energyPerTickIn = 20000;
         d.armorReduction = 8;
         d.armorEnergyPerHit = 160;
         d.enchantability = 16;
-        d.speedVertical = 0.5D;
+        d.speedVertical = 0.48D;
         d.accelVertical = 0.14D;
         d.speedVerticalHover = 0.4D;
         d.speedVerticalHoverSlow = 0.005D;
-        d.speedSideways = 0.12D;
+        d.speedSideways = 0.1D;
         d.sprintSpeedModifier = 1.3D;
         d.sprintEnergyModifier = 4.0D;
         d.hoverMode = true;
@@ -246,20 +246,20 @@ public class JetpackDataHolder {
         d.chargerMode = false;
 
         d = new JetpackDataHolder("te5", "thermal");
-        d.energyCapacity = 10000000;
+        d.energyCapacity = 40000000;
         d.energyUsage = 850;
         d.energyPerTickIn = 30000;
         d.energyPerTickOut = 30000;
         d.armorReduction = 12;
         d.armorEnergyPerHit = 240;
         d.enchantability = 18;
-        d.speedVertical = 0.7D;
-        d.accelVertical = 0.15D;
-        d.speedVerticalHover = 0.3D;
-        d.speedVerticalHoverSlow = 0.0D;
-        d.speedSideways = 0.17D;
-        d.sprintSpeedModifier = 1.4D;
-        d.sprintEnergyModifier = 6D;
+        d.speedVertical = 0.5D;
+        d.accelVertical = 0.14D;
+        d.speedVerticalHover = 0.4D;
+        d.speedVerticalHoverSlow = 0.005D;
+        d.speedSideways = 0.12D;
+        d.sprintSpeedModifier = 1.3D;
+        d.sprintEnergyModifier = 4.0D;
         d.hoverMode = true;
         d.emergencyHoverMode = true;
         d.chargerMode = true;

@@ -6,7 +6,7 @@ public class ConfigDefaults {
     public static final boolean invertHoverSneakingBehavior = false;
 
     // Audio
-    public static final boolean enableJetpackSounds = false;
+    public static final boolean enableJetpackSounds = true;
 
     // GUI
     public static final boolean showThrottle = true;

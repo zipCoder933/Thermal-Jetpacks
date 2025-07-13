@@ -6,14 +6,14 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class PacketToggleHUD {
+public class PacketEnableJetpackHUD {
     final boolean enabled;
 
-    public PacketToggleHUD(FriendlyByteBuf buf) {
+    public PacketEnableJetpackHUD(FriendlyByteBuf buf) {
         this.enabled = buf.readBoolean();
     }
 
-    public PacketToggleHUD(boolean enabled) {
+    public PacketEnableJetpackHUD(boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -22,8 +22,8 @@ public class PacketToggleHUD {
         buf.writeBoolean(enabled);
     }
 
-    public static PacketToggleHUD fromBytes(FriendlyByteBuf buffer) {
-        return new PacketToggleHUD(buffer);
+    public static PacketEnableJetpackHUD fromBytes(FriendlyByteBuf buffer) {
+        return new PacketEnableJetpackHUD(buffer);
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {

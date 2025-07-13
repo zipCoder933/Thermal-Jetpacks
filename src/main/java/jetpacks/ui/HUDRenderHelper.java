@@ -2,12 +2,12 @@ package jetpacks.ui;
 
 import com.mojang.blaze3d.platform.Window;
 import jetpacks.ThermalJetpacks;
+import jetpacks.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import jetpacks.config.ConfigDefaults;
-import jetpacks.config.SimplyJetpacksConfig;
 
 public class HUDRenderHelper {
 
@@ -17,12 +17,12 @@ public class HUDRenderHelper {
         int windowScaleHeight = window.getGuiScaledHeight();
         int windowScaleWidth = window.getGuiScaledWidth();
 
-        ConfigDefaults.HUDPosition position = SimplyJetpacksConfig.hudTextPosition.get();
-        int color = SimplyJetpacksConfig.hudTextColor.get();
-        int xOffset = SimplyJetpacksConfig.hudXOffset.get();
-        int yOffset = SimplyJetpacksConfig.hudYOffset.get();
-        long hudScale = SimplyJetpacksConfig.hudScale.get();
-        boolean hudTextShadow = SimplyJetpacksConfig.hudTextShadow.get();
+        ConfigDefaults.HUDPosition position = ModConfig.hudTextPosition.get();
+        int color = ModConfig.hudTextColor.get();
+        int xOffset = ModConfig.hudXOffset.get();
+        int yOffset = ModConfig.hudYOffset.get();
+        long hudScale = ModConfig.hudScale.get();
+        boolean hudTextShadow = ModConfig.hudTextShadow.get();
 
         int screenHeight = (int) (windowScaleHeight / hudScale);
         int screenWidth = (int) (windowScaleWidth / hudScale);

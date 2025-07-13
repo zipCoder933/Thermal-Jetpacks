@@ -17,7 +17,7 @@
     "announce_to_chat": false,
     "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
     "description": {
-      "translate": "advancement.simplyjetpacks.root.description"
+      "translate": "advancement.tjetpacks.root.description"
     },
     "frame": "task",
     "hidden": false,
@@ -26,7 +26,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "advancement.simplyjetpacks.root.title"
+      "translate": "advancement.tjetpacks.root.title"
     }
   },
   "requirements": [

@@ -1,11 +1,11 @@
 package jetpacks.util;
 
+import jetpacks.config.ModConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import jetpacks.config.SimplyJetpacksConfig;
 import jetpacks.item.JetpackItem;
 
 import java.util.ArrayList;
@@ -94,7 +94,7 @@ public class SJTextUtil {
     }
 
     public static void addHUDInfoText(ItemStack stack, List<Component> list) {
-        if (SimplyJetpacksConfig.showThrottle.get()) {
+        if (ModConfig.showThrottle.get()) {
             JetpackItem jetpack = (JetpackItem) stack.getItem();
             list.add(translate("hud", "throttle", jetpack.getThrottle(stack)));
         }
@@ -110,7 +110,7 @@ public class SJTextUtil {
         int percent = (int) Math.ceil((double) jetpack.getEnergy(stack) / (double) jetpack.getCapacity(stack) * 100D);
         Component percentageText = getColoredPercent(percent);
         Component exactText = energy(jetpack.getEnergy(stack));
-        if (SimplyJetpacksConfig.showExactEnergy.get()) {
+        if (ModConfig.showExactEnergy.get()) {
             return translate("hud", "energyDisplayExtra", percentageText, exactText);
         } else {
             return translate("hud", "energyDisplay", percentageText);
@@ -143,15 +143,15 @@ public class SJTextUtil {
         Component eHoverState = translate("hud", "eHover", jetpack.getJetpackType().getEmergencyHoverMode() ? (jetpack.isEHoverOn(stack) ? on : off) : notAvailable);
         Component chargerState = translate("hud", "charger", jetpack.getJetpackType().getChargerMode() ? (jetpack.isChargerOn(stack) ? on : off) : notAvailable);
         statesTexts.add(engineState);
-        if (SimplyJetpacksConfig.showHoverState.get() && jetpack.getJetpackType().getHoverMode()) {
+        if (ModConfig.showHoverState.get() && jetpack.getJetpackType().getHoverMode()) {
             statesTexts.add(hoverState);
             stateCount++;
         }
-        if (SimplyJetpacksConfig.showEHoverState.get() && jetpack.getJetpackType().getEmergencyHoverMode()) {
+        if (ModConfig.showEHoverState.get() && jetpack.getJetpackType().getEmergencyHoverMode()) {
             statesTexts.add(eHoverState);
             stateCount++;
         }
-        if (SimplyJetpacksConfig.showChargerState.get() && jetpack.getJetpackType().getChargerMode()) {
+        if (ModConfig.showChargerState.get() && jetpack.getJetpackType().getChargerMode()) {
             statesTexts.add(chargerState);
             stateCount++;
         }

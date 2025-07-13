@@ -1,27 +1,28 @@
-package jetpacks.sound;
+package jetpacks.handlers;
 
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import jetpacks.RegistryHandler;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 @OnlyIn(Dist.CLIENT)
-public class JetpackSound extends AbstractTickableSoundInstance {
+public class JetpackSoundEvent extends AbstractTickableSoundInstance {
 
-    private static final Map<Integer, JetpackSound> PLAYING_FOR = Collections.synchronizedMap(new HashMap<>());
+    private static final Map<Integer, JetpackSoundEvent> PLAYING_FOR = Collections.synchronizedMap(new HashMap<>());
     private final Player player;
+    private static final float MAX_VOLUME = 0.8F;
     private int fadeOut = -1;
 
-    public JetpackSound(Player player) {
-        super(RegistryHandler.JETPACK_SOUND.get(), SoundSource.PLAYERS, RandomSource.create());
+    public JetpackSoundEvent(Player player, SoundEvent soundEvent) {
+        super(soundEvent, SoundSource.PLAYERS, RandomSource.create());
         this.player = player;
         this.looping = true;
         PLAYING_FOR.put(player.getId(), this);
@@ -48,7 +49,7 @@ public class JetpackSound extends AbstractTickableSoundInstance {
         } else if (this.fadeOut >= 5) {
             this.stop();
         } else {
-            this.volume = 1.0F - this.fadeOut / 5F;
+            this.volume = MAX_VOLUME - this.fadeOut / 5F;
             this.fadeOut++;
         }
     }

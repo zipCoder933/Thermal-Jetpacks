@@ -1,6 +1,6 @@
 package jetpacks;
 
-import jetpacks.config.SimplyJetpacksConfig;
+import jetpacks.config.ModConfig;
 import jetpacks.handlers.ClientJetpackHandler;
 import jetpacks.handlers.CommonJetpackHandler;
 import jetpacks.handlers.KeybindHandler;
@@ -132,7 +132,7 @@ Tab Title: itemGroup.tjetpacks.main
         // Register the item to a creative tab
         bus.addListener(ThermalJetpacks::addCreative);
 
-        SimplyJetpacksConfig.register();
+        ModConfig.register();
         RegistryHandler.init();
     }
 
@@ -192,7 +192,7 @@ Tab Title: itemGroup.tjetpacks.main
     @SubscribeEvent
     public void onPlayerLogin(final PlayerEvent.PlayerLoggedInEvent loggedInEvent) {
         ThermalJetpacks.LOGGER.info("{} logging in. Syncing server jetpack configs with client.", loggedInEvent.getEntity().getName().getString());
-        SimplyJetpacksConfig.sendServerConfigFiles(loggedInEvent.getEntity());
+        ModConfig.sendServerConfigFiles(loggedInEvent.getEntity());
         ThermalJetpacks.LOGGER.info("Finished syncing server jetpack configs.");
     }
 

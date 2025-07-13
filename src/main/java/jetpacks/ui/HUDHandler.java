@@ -14,7 +14,7 @@ import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import jetpacks.config.SimplyJetpacksConfig;
+import jetpacks.config.ModConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public final class HUDHandler {
     private static final IGuiOverlay HUD_OVERLAY = (gui, gfx, partialTick, width, height) -> {
         if (renderJetpackHUD) {
             var minecraft = Minecraft.getInstance();
-            if (SimplyJetpacksConfig.enableJetpackHud.get() && !minecraft.options.hideGui && !minecraft.options.renderDebug) {
+            if (ModConfig.enableJetpackHud.get() && !minecraft.options.hideGui && !minecraft.options.renderDebug) {
                 if (minecraft.player != null) {
                     ItemStack chestplate = JetpackUtil.getFromChestAndCurios(minecraft.player);
                     Item item = chestplate.getItem();
@@ -44,7 +44,7 @@ public final class HUDHandler {
                         int count = 0;
                         PoseStack matrix = gfx.pose();
                         matrix.pushPose();
-                        matrix.scale(SimplyJetpacksConfig.hudScale.get(), SimplyJetpacksConfig.hudScale.get(), 1.0F);
+                        matrix.scale(ModConfig.hudScale.get(), ModConfig.hudScale.get(), 1.0F);
                         Window window = minecraft.getWindow();
                         for (Component text : renderStrings) {
                             HUDRenderHelper.drawStringAtPosition(gfx, window, text, count);

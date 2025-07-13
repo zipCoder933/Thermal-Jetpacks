@@ -24,7 +24,16 @@ public class RegistryHandler {
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, MOD_ID);
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, MOD_ID);
     public static final DeferredRegister<MenuType<?>> MENU = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MOD_ID);
+
+    //Sounds
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MOD_ID);
+//    public static final SoundEvent JETPACK = SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, "jetpack"));
+//    public static final SoundEvent JETPACK_OTHER = SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, "jetpack_other"));
+//    public static final SoundEvent ROCKET = SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, "rocket"));
+    public static final RegistryObject<SoundEvent> SOUND_JETPACK = SOUNDS.register("jetpack", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, "jetpack")));
+    public static final RegistryObject<SoundEvent> SOUND_JETPACK_OTHER = SOUNDS.register("jetpack_other", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, "jetpack_other")));
+    public static final RegistryObject<SoundEvent> SOUND_ROCKET = SOUNDS.register("rocket", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, "rocket")));
+
 
     public static void init() {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
@@ -47,17 +56,17 @@ public class RegistryHandler {
     public static final RegistryObject<PilotGogglesItem> PILOT_GOGGLES_GOLD = ITEMS.register("pilot_goggles_gold", () -> new PilotGogglesItem("gold"));
     public static final RegistryObject<PilotGogglesItem> PILOT_GOGGLES_IRON = ITEMS.register("pilot_goggles_iron", () -> new PilotGogglesItem("iron"));
 
-    public static final RegistryObject<SJItem> LEATHER_STRAP = ITEMS.register("leather_strap", SJItem::new);
-    public static final RegistryObject<SJItem> CRYOGENIC_CRYSTAL = ITEMS.register("cryogenic_crystal", SJItem::new);
+    public static final RegistryObject<Item> LEATHER_STRAP = ITEMS.register("leather_strap", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CRYOGENIC_CRYSTAL = ITEMS.register("cryogenic_crystal", () -> new Item(new Item.Properties()));
     //    public static final RegistryObject<SJItem> UNIT_CRYOGENIC = ITEMS.register("unit_cryogenic", SJItem::new);
-    public static final RegistryObject<SJItem> COMBUSTION_CHAMBER = ITEMS.register("combustion_chamber", SJItem::new);
+    public static final RegistryObject<Item> COMBUSTION_CHAMBER = ITEMS.register("combustion_chamber", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<SJItem> THRUSTER_TE1 = ITEMS.register("thruster_te1", SJItem::new);
-    public static final RegistryObject<SJItem> THRUSTER_TE2 = ITEMS.register("thruster_te2", SJItem::new);
-    public static final RegistryObject<SJItem> THRUSTER_TE3 = ITEMS.register("thruster_te3", SJItem::new);
-    public static final RegistryObject<SJItem> THRUSTER_TE4 = ITEMS.register("thruster_te4", SJItem::new);
-    //    public static final RegistryObject<SJItem> THRUSTER_TE5 = ITEMS.register("thruster_te5", SJItem::new);
-    public static final RegistryObject<SJItem> FLUX_CHESTPLATE = ITEMS.register("flux_chestplate", SJItem::new);
+    public static final RegistryObject<Item> THRUSTER_TE1 = ITEMS.register("thruster_te1", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> THRUSTER_TE2 = ITEMS.register("thruster_te2", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> THRUSTER_TE3 = ITEMS.register("thruster_te3", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> THRUSTER_TE4 = ITEMS.register("thruster_te4", () -> new Item(new Item.Properties()));
+    //    public static final RegistryObject<Item> THRUSTER_TE5 = ITEMS.register("thruster_te5", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLUX_CHESTPLATE = ITEMS.register("flux_chestplate", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<JetpackItem> JETPACK_TE1 = ITEMS.register("jetpack_te1", () -> new JetpackItem(JetpackType.TE1, false));
     public static final RegistryObject<JetpackItem> JETPACK_TE2 = ITEMS.register("jetpack_te2", () -> new JetpackItem(JetpackType.TE2, false));
@@ -99,8 +108,4 @@ public class RegistryHandler {
 //    public static final RegistryObject<SJItem> THRUSTER_MEK4 = ITEMS.register("thruster_mek4", SJItem::new);
 
 
-    // Sound Events
-    public static final RegistryObject<SoundEvent> JETPACK_SOUND = SOUNDS.register("jetpack", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, "jetpack")));
-    //    public static final RegistryObject<SoundEvent> JETPACK_OTHER_SOUND = SOUNDS.register("jetpack_other", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, "jetpack_other")));
-    public static final RegistryObject<SoundEvent> ROCKET_SOUND = SOUNDS.register("rocket", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MOD_ID, "rocket")));
 }
