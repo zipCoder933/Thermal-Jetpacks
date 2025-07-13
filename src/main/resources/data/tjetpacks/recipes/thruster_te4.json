@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "iUi",
+    "UCU",
     "iti",
-    "ibi"
+    "i i"
   ],
   "key": {
     "i": {
       "tag": "forge:plates/enderium"
     },
-    "b": {
-      "item": "thermal:basalz_powder"
+    "C": {
+      "item": "tjetpacks:combustion_chamber"
     },
     "t": {
-      "item": "tjetpacks:thruster_te3"
+      "item": "thermal:lightning_charge"
     },
     "U": {
       "item": "thermal:upgrade_augment_3"

@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "iUi",
+    "UCU",
     "iti",
-    "ibi"
+    "i i"
   ],
   "key": {
     "i": {
       "tag": "forge:plates/invar"
     },
-    "b": {
-      "item": "minecraft:blaze_powder"
+    "C": {
+      "item": "tjetpacks:combustion_chamber"
     },
     "t": {
-      "item": "tjetpacks:thruster_te1"
+      "item": "thermal:lightning_charge"
     },
     "U": {
       "item": "thermal:upgrade_augment_1"

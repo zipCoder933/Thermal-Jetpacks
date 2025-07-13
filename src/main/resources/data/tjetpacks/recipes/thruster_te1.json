@@ -1,16 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "iii",
-    "ibi",
+    "iGi",
+    "iBi",
     "i i"
   ],
   "key": {
     "i": {
-      "tag": "forge:plates/invar"
+      "tag": "forge:plates/lead"
     },
-    "b": {
-      "item": "minecraft:blaze_powder"
+    "B": {
+      "item": "thermal:lightning_charge"
+    },
+    "G": {
+      "item": "tjetpacks:combustion_chamber"
     }
   },
   "result": {

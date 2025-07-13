@@ -3,7 +3,7 @@
   "pattern": [
     "i i",
     "isi",
-    "iei"
+    "rer"
   ],
   "key": {
     "s": {
@@ -11,6 +11,9 @@
     },
     "i": {
       "item": "thermal:signalum_plate"
+    },
+    "r": {
+      "item": "thermal:rf_coil"
     },
     "e": {
       "item": "tjetpacks:cryogenic_crystal"
