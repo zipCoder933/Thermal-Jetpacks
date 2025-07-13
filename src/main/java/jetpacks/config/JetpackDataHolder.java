@@ -172,7 +172,7 @@ public class JetpackDataHolder {
         d.chargerMode = false;
 
         d = new JetpackDataHolder("te1", "thermal");
-        d.energyCapacity = 20000;
+        d.energyCapacity = 40000;
         d.energyUsage = 32;
         d.energyPerTickIn = 1500;
         d.armorReduction = 2;
@@ -190,7 +190,7 @@ public class JetpackDataHolder {
         d.chargerMode = false;
 
         d = new JetpackDataHolder("te2", "thermal");
-        d.energyCapacity = 60000;
+        d.energyCapacity = 120000;
         d.energyUsage = 50;
         d.energyPerTickIn = 8000;
         d.armorReduction = 4;
@@ -200,15 +200,15 @@ public class JetpackDataHolder {
         d.accelVertical = 0.12D;
         d.speedVerticalHover = 0.18D;
         d.speedVerticalHoverSlow = 0.1D;
-        d.speedSideways = 0.08D;
-        d.sprintSpeedModifier = 1.1D;
+        d.speedSideways = 0.02D;
+        d.sprintSpeedModifier = 1.02D;
         d.sprintEnergyModifier = 1.5D;
         d.hoverMode = true;
         d.emergencyHoverMode = false;
         d.chargerMode = false;
 
         d = new JetpackDataHolder("te3", "thermal");
-        d.energyCapacity = 150000;
+        d.energyCapacity = 360000;
         d.energyUsage = 200;
         d.energyPerTickIn = 15000;
         d.armorReduction = 6;
@@ -218,8 +218,8 @@ public class JetpackDataHolder {
         d.accelVertical = 0.1D;
         d.speedVerticalHover = 0.34D;
         d.speedVerticalHoverSlow = 0.03D;
-        d.speedSideways = 0.1D;
-        d.sprintSpeedModifier = 1.3D;
+        d.speedSideways = 0.05D;
+        d.sprintSpeedModifier = 1.1D;
         d.sprintEnergyModifier = 2.3D;
         d.hoverMode = true;
         d.emergencyHoverMode = true;
