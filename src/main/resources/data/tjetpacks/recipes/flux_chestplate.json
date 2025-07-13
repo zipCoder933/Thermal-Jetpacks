@@ -10,10 +10,10 @@
       "item": "minecraft:netherite_chestplate"
     },
     "i": {
-      "item": "#forge:plates/signalum"
+      "item": "thermal:signalum_plate"
     },
     "e": {
-      "item": "thermal:netherite_plate"
+      "item": "tjetpacks:cryogenic_crystal"
     }
   },
   "result": {

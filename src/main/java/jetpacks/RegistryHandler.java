@@ -59,7 +59,7 @@ public class RegistryHandler {
     public static final RegistryObject<SJItem> LEATHER_STRAP = ITEMS.register("leather_strap", SJItem::new);
     public static final RegistryObject<SJItem> CRYOGENIC_CRYSTAL = ITEMS.register("cryogenic_crystal", SJItem::new);
     public static final RegistryObject<SJItem> UNIT_CRYOGENIC = ITEMS.register("unit_cryogenic", SJItem::new);
-    public static final RegistryObject<SJItem> UNIT_GLOWSTONE_EMPTY = ITEMS.register("unit_glowstone_empty", SJItem::new);
+//    public static final RegistryObject<SJItem> UNIT_GLOWSTONE_EMPTY = ITEMS.register("unit_glowstone_empty", SJItem::new);
     public static final RegistryObject<SJItem> UNIT_GLOWSTONE = ITEMS.register("unit_glowstone", SJItem::new);
 
     public static final RegistryObject<SJItem> THRUSTER_TE1 = ITEMS.register("thruster_te1", SJItem::new);

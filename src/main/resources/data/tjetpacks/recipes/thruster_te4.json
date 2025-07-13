@@ -7,10 +7,10 @@
   ],
   "key": {
     "i": {
-      "item": "minecraft:iron_ingot"
+      "tag": "forge:plates/enderium"
     },
     "b": {
-      "item": "minecraft:blaze_powder"
+      "item": "thermal:basalz_powder"
     },
     "t": {
       "item": "tjetpacks:thruster_te3"

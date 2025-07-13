@@ -3,14 +3,14 @@
   "pattern": [
     "iii",
     "ses",
-    "t t"
+    "tit"
   ],
   "key": {
     "s": {
       "item": "tjetpacks:leather_strap"
     },
     "i": {
-      "item": "thermal:silver_ingot"
+      "item": "thermal:lead_ingot"
     },
     "e": {
       "item": "minecraft:elytra"
