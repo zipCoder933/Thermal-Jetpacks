@@ -7,35 +7,31 @@ import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 import jetpacks.item.JetpackItem;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 public class JetpackUtil {
 
-    private final static boolean curiosLoaded = ModList.get().isLoaded("curios");
+    private final static boolean CURIOS_LOADED = ModList.get().isLoaded("curios");
 
-    public static ItemStack getFromChestAndCurios(Player player) {
-        ItemStack jetpackItem = getFromChest(player);
-
-        if (jetpackItem == ItemStack.EMPTY && curiosLoaded) {
-            //https://docs.illusivesoulworks.com/1.20.x/curios/inventory/basic-inventory
-            ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(player).resolve().get();
-            SlotResult slotResult = curiosInventory
-                    .findFirstCurio(stack -> stack.getItem() instanceof JetpackItem)
-                    .orElse(null);
-            if (slotResult != null) return slotResult.stack();
-
-
-//            return CuriosApi.getCuriosHelper()
-//                    .findEquippedCurio(stack -> stack.getItem() instanceof JetpackItem, player)
-//                    .map(ImmutableTriple::getRight).orElse(ItemStack.EMPTY);
-        }
-        return jetpackItem;
-    }
-
-    public static ItemStack getFromChest(Player player) {
+    public static ItemStack getItemFromChest(Player player) {
+//        ItemStack jetpackItem = getFromChest(player);
+//
+//        if (jetpackItem == ItemStack.EMPTY && curiosLoaded) {
+//            //https://docs.illusivesoulworks.com/1.20.x/curios/inventory/basic-inventory
+//            ICuriosItemHandler curiosInventory = CuriosApi.getCuriosInventory(player).resolve().get();
+//            SlotResult slotResult = curiosInventory
+//                    .findFirstCurio(stack -> stack.getItem() instanceof JetpackItem)
+//                    .orElse(null);
+//            if (slotResult != null) return slotResult.stack();
+//
+//
+////            return CuriosApi.getCuriosHelper()
+////                    .findEquippedCurio(stack -> stack.getItem() instanceof JetpackItem, player)
+////                    .map(ImmutableTriple::getRight).orElse(ItemStack.EMPTY);
+//        }
+//        return jetpackItem;
         return player.getItemBySlot(EquipmentSlot.CHEST);
     }
+
 
     /*
      * Train of thought:
@@ -65,7 +61,7 @@ public class JetpackUtil {
     // 1 if curios and any jetpack item in slot
     // 2 if curios and correct slot
     private static int checkCuriosSlot(ItemStack which, Player player) {
-        if (curiosLoaded) {
+        if (CURIOS_LOADED) {
             ItemStack curioStack = CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() instanceof JetpackItem, player)
                     .map(ImmutableTriple::getRight).orElse(ItemStack.EMPTY);
             if (curioStack.isEmpty()) {

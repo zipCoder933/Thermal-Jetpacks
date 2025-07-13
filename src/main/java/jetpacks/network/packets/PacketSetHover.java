@@ -31,7 +31,7 @@ public class PacketSetHover {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
             if (player != null) {
-                ItemStack stack = JetpackUtil.getFromChestAndCurios(player);
+                ItemStack stack = JetpackUtil.getItemFromChest(player);
                 Item item = stack.getItem();
                 if (item instanceof JetpackItem jetpack) {
                     if(status == ToggleStatus.TOGGLE) jetpack.setHoverOn(stack, player, !jetpack.isHoverOn(stack));

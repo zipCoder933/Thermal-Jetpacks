@@ -5,6 +5,8 @@ import jetpacks.ThermalJetpacks;
 import jetpacks.config.ModConfig;
 import jetpacks.item.JetpackItem;
 import jetpacks.item.JetpackType;
+import jetpacks.network.NetworkHandler;
+import jetpacks.network.packets.PacketUpdateInput;
 import jetpacks.particle.JetpackParticleType;
 import jetpacks.util.JetpackUtil;
 import jetpacks.util.Pos3D;
@@ -12,6 +14,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.ParticleStatus;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -20,6 +23,8 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.Random;
+
+import static com.ibm.icu.text.RuleBasedNumberFormat.DURATION;
 
 @OnlyIn(Dist.CLIENT)
 public class ClientJetpackHandler {
@@ -32,12 +37,48 @@ public class ClientJetpackHandler {
         ThermalJetpacks.LOGGER.info("Client jetpack config successfully reverted.");
     }
 
-    public static JetpackItem jetpackItem;
-    public static ItemStack jetpackItemStack;
+    /**
+     * These static fields are used to save us from having to constantly check if the player is wearing a jetpack
+     */
+    private static JetpackItem CLIENT_GLOBAL_JETPACK;
+    private static ItemStack CLIENT_GLOBAL_JETPACK_STACK;
+
+    public static ItemStack global_checkForEquippedJetpack(Player player) {
+        CLIENT_GLOBAL_JETPACK_STACK = JetpackUtil.getItemFromChest(player);
+        if (!CLIENT_GLOBAL_JETPACK_STACK.isEmpty() && CLIENT_GLOBAL_JETPACK_STACK.getItem() instanceof JetpackItem jetpack2) {
+            CLIENT_GLOBAL_JETPACK = jetpack2;
+        } else CLIENT_GLOBAL_JETPACK = null;
+        return CLIENT_GLOBAL_JETPACK_STACK;
+    }
+
+    public static JetpackItem global_getEquippedJetpack() {
+        return CLIENT_GLOBAL_JETPACK;
+    }
+
+    public static ItemStack global_getEquippedJetpackStack() {
+        return CLIENT_GLOBAL_JETPACK_STACK;
+    }
+
+    //For client tick only:
+    private static JetpackItem jetpack;
+    private static ItemStack jetpackStack;
+    private static boolean lastFlyState = false;
+    private static boolean lastInvertHover = false;
+    private static boolean lastDescendState = false;
+    private static boolean lastForwardState = false;
+    private static boolean lastBackwardState = false;
+    private static boolean lastLeftState = false;
+    private static boolean lastRightState = false;
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && jetpackItemStack != null) {
+        if (event.phase == TickEvent.Phase.END) {
+
+            //Check if we are wearing a jetpack at the very beginning
+            jetpack = global_getEquippedJetpack();
+            jetpackStack = global_getEquippedJetpackStack();
+            if (jetpack == null) return;
+
 
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.player != null
@@ -45,11 +86,15 @@ public class ClientJetpackHandler {
                     && !minecraft.player.isSpectator()
                     && !minecraft.player.getAbilities().flying) {
 
-                //Make sure the jetpack is still here!
-                jetpackItemStack = JetpackUtil.getFromChest(minecraft.player);
-                if (jetpackItemStack == null) return;
+                //Make sure the jetpack is still here! Check every 20 ticks
+                if (minecraft.level.getGameTime() % 20 == 0) {
+                    global_checkForEquippedJetpack(minecraft.player);
+                    if (global_getEquippedJetpack() == null) return;
+                }
 
-                if (isJetpackFlying(minecraft.player, jetpackItemStack, jetpackItem)) {
+                common_updateFlightState(minecraft);
+
+                if (isJetpackFlying(minecraft.player, jetpackStack, jetpack)) {
                     //Make particles
                     if (ModConfig.enableJetpackParticles.get()
                             && (minecraft.options.particles().get() != ParticleStatus.MINIMAL)) {
@@ -57,10 +102,44 @@ public class ClientJetpackHandler {
                     }
 
                     // Play sounds:
-                    if (ModConfig.enableJetpackSounds.get() && !JetpackSoundEvent.playing(minecraft.player.getId())) {
-                        minecraft.getSoundManager().play(new JetpackSoundEvent(minecraft.player, RegistryHandler.SOUND_JETPACK_OTHER.get()));
+                    if (minecraft.level.getGameTime() % DURATION == 0 &&
+                            ModConfig.enableJetpackSounds.get() &&
+                            !JetpackSoundEvent.playing(minecraft.player.getId())) {
+                        minecraft.getSoundManager().play(new JetpackSoundEvent(minecraft.player));
                     }
+
                 }
+            }
+        }
+    }
+
+
+    private static void common_updateFlightState(Minecraft mc) {
+        if (mc.player != null) {
+            //Update the state and send to server
+            boolean flyState = mc.player.input.jumping;
+            boolean invertHover = ModConfig.invertHoverSneakingBehavior.get();
+            boolean descendState = mc.player.input.shiftKeyDown;
+            boolean forwardState = mc.player.input.up;
+            boolean backwardState = mc.player.input.down;
+            boolean leftState = mc.player.input.left;
+            boolean rightState = mc.player.input.right;
+            if (flyState != lastFlyState
+                    || invertHover != lastInvertHover
+                    || descendState != lastDescendState
+                    || forwardState != lastForwardState
+                    || backwardState != lastBackwardState
+                    || leftState != lastLeftState
+                    || rightState != lastRightState) {
+                lastFlyState = flyState;
+                lastInvertHover = invertHover;
+                lastDescendState = descendState;
+                lastForwardState = forwardState;
+                lastBackwardState = backwardState;
+                lastLeftState = leftState;
+                lastRightState = rightState;
+                NetworkHandler.sendToServer(new PacketUpdateInput(invertHover, flyState, descendState, forwardState, backwardState, leftState, rightState));
+                CommonJetpackHandler.update(mc.player, invertHover, flyState, descendState, forwardState, backwardState, leftState, rightState);
             }
         }
     }

@@ -45,8 +45,8 @@ public class JetpackScreen extends Screen {
         super(Component.translatable("screen." + MOD_ID + ".jetpack_screen.title"));
         this.width = WIDTH;
         this.height = HEIGHT;
-        this.jetpackItem = (JetpackItem) JetpackUtil.getFromChestAndCurios(minecraft.player).getItem();
-        this.jetpackStack = JetpackUtil.getFromChestAndCurios(minecraft.player);
+        this.jetpackItem = (JetpackItem) JetpackUtil.getItemFromChest(minecraft.player).getItem();
+        this.jetpackStack = JetpackUtil.getItemFromChest(minecraft.player);
     }
 
     public static void update(boolean engineOn, boolean hoverOn, boolean eHoverOn, boolean chargerOn) {

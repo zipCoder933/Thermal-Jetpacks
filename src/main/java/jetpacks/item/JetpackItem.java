@@ -3,6 +3,7 @@ package jetpacks.item;
 import jetpacks.I_ServerGamePacketListenerImpl;
 import jetpacks.model.JetpackModelLayers;
 import jetpacks.util.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -81,12 +82,21 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         return this.jetpackType.getArmorTexture();
     }
 
+    boolean inSlot = false;
+
+
+    //TODO: Could this be optimized?
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity holder, int vanillaIndex, boolean selected) {
         if (holder instanceof Player player
                 && !player.isSpectator()
-                && !player.getAbilities().flying
-                && JetpackUtil.checkTickForEquippedSlot(vanillaIndex, stack, player)) {
+                && !player.getAbilities().flying) {
+
+            //Check every 10 ticks to make sure the player is still wearing the jetpack
+            if (level.getGameTime() % 10 != 0)
+                inSlot = JetpackUtil.checkTickForEquippedSlot(vanillaIndex, stack, player);
+            if (!inSlot) return;
+
 
             flyUser(player, stack, this, false);
             if (this.jetpackType.getChargerMode() && this.isChargerOn(stack)) {

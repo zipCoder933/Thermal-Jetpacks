@@ -1,14 +1,11 @@
 package jetpacks.handlers;
 
 import jetpacks.RegistryHandler;
-import jetpacks.item.JetpackItem;
 import jetpacks.network.NetworkHandler;
 import jetpacks.network.packets.PacketEnableJetpackHUD;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -18,13 +15,13 @@ import static jetpacks.ThermalJetpacks.MOD_ID;
  * Only works on the server
  */
 @Mod.EventBusSubscriber(modid = MOD_ID)
-public class EquipmentChangeHandler {
+public class ServerModEvents {
 
-    @SubscribeEvent
-    public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        ServerPlayer player = (ServerPlayer) event.getEntity();
-        // Your logic here
-    }
+//    @SubscribeEvent
+//    public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
+//        ServerPlayer player = (ServerPlayer) event.getEntity();
+//        // Your logic here
+//    }
 
     @SubscribeEvent
     public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
@@ -42,15 +39,14 @@ public class EquipmentChangeHandler {
             NetworkHandler.sendToClient(new PacketEnableJetpackHUD(false), (ServerPlayer) player);
         }
 
-        if (event.getTo().getItem() instanceof JetpackItem jetpack
-                && event.getSlot() == EquipmentSlot.CHEST) {
-            NetworkHandler.sendToClient(new WearingJetpack(jetpackItemStack,jetpackItem), (ServerPlayer) player);
-            ClientJetpackHandler.jetpackItemStack = event.getTo();
-            ClientJetpackHandler.jetpackItem = jetpack;
-        } else if (event.getFrom().getItem() instanceof JetpackItem jetpack
-                && event.getSlot() == EquipmentSlot.CHEST) {
-            ClientJetpackHandler.jetpackItem = null;
-            ClientJetpackHandler.jetpackItemStack = null;
-        }
+//        if (event.getTo().getItem() instanceof JetpackItem jetpack
+//                && event.getSlot() == EquipmentSlot.CHEST) {
+//            ClientJetpackHandler.jetpackItemStack = event.getTo();
+//            ClientJetpackHandler.jetpackItem = jetpack;
+//        } else if (event.getFrom().getItem() instanceof JetpackItem jetpack
+//                && event.getSlot() == EquipmentSlot.CHEST) {
+//            ClientJetpackHandler.jetpackItem = null;
+//            ClientJetpackHandler.jetpackItemStack = null;
+//        }
     }
 }

@@ -76,7 +76,7 @@ public class PacketUpdateClientJetpackUI {
                 System.out.println("PacketJetpackStatus: Requesting status");
                 ServerPlayer player = ctx.get().getSender();
                 if (player != null) { //If the client sent this packet, its requesting us to send status to them
-                    ItemStack stack = JetpackUtil.getFromChestAndCurios(player);
+                    ItemStack stack = JetpackUtil.getItemFromChest(player);
                     Item item = stack.getItem();
                     if (item instanceof JetpackItem jetpack) {
                         NetworkHandler.sendToClient(new PacketUpdateClientJetpackUI(jetpack, stack), player);

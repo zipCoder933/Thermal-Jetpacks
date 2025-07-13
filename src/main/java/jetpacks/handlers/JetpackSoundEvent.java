@@ -1,5 +1,6 @@
 package jetpacks.handlers;
 
+import jetpacks.RegistryHandler;
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -16,20 +17,27 @@ import java.util.Map;
 @OnlyIn(Dist.CLIENT)
 public class JetpackSoundEvent extends AbstractTickableSoundInstance {
 
+    //A list of all jetpack sounds for all players
     private static final Map<Integer, JetpackSoundEvent> PLAYING_FOR = Collections.synchronizedMap(new HashMap<>());
+    private static final float MAX_VOLUME = 1F;
+    private static final float DURATION = 5;
+
     private final Player player;
-    private static final float MAX_VOLUME = 0.8F;
     private int fadeOut = -1;
 
-    public JetpackSoundEvent(Player player, SoundEvent soundEvent) {
-        super(soundEvent, SoundSource.PLAYERS, RandomSource.create());
+
+    public JetpackSoundEvent(Player player) {
+        super(RegistryHandler.SOUND_JETPACK_OTHER.get(),
+                SoundSource.PLAYERS, RandomSource.create());
         this.player = player;
         this.looping = true;
         PLAYING_FOR.put(player.getId(), this);
     }
 
     public static boolean playing(int entityId) {
-        return PLAYING_FOR.containsKey(entityId) && PLAYING_FOR.get(entityId) != null && !PLAYING_FOR.get(entityId).isStopped();
+        return PLAYING_FOR.containsKey(entityId)
+                && PLAYING_FOR.get(entityId) != null
+                && !PLAYING_FOR.get(entityId).isStopped();
     }
 
     @Override
@@ -46,10 +54,10 @@ public class JetpackSoundEvent extends AbstractTickableSoundInstance {
             synchronized (PLAYING_FOR) {
                 PLAYING_FOR.remove(this.player.getId());
             }
-        } else if (this.fadeOut >= 5) {
+        } else if (this.fadeOut >= DURATION) {
             this.stop();
         } else {
-            this.volume = MAX_VOLUME - this.fadeOut / 5F;
+            this.volume = MAX_VOLUME - this.fadeOut / DURATION;
             this.fadeOut++;
         }
     }

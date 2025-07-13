@@ -31,7 +31,7 @@ public class PacketSetCharger {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
             if (player != null) {
-                ItemStack stack = JetpackUtil.getFromChestAndCurios(player);
+                ItemStack stack = JetpackUtil.getItemFromChest(player);
                 Item item = stack.getItem();
                 if (item instanceof JetpackItem jetpack) {
                     if (status == ToggleStatus.TOGGLE) jetpack.setChargerOn(stack, player, !jetpack.isChargerOn(stack));

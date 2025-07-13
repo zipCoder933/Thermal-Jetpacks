@@ -29,7 +29,7 @@ public final class HUDHandler {
             var minecraft = Minecraft.getInstance();
             if (ModConfig.enableJetpackHud.get() && !minecraft.options.hideGui && !minecraft.options.renderDebug) {
                 if (minecraft.player != null) {
-                    ItemStack chestplate = JetpackUtil.getFromChestAndCurios(minecraft.player);
+                    ItemStack chestplate = JetpackUtil.getItemFromChest(minecraft.player);
                     Item item = chestplate.getItem();
 
                     if (!chestplate.isEmpty() && item instanceof JetpackItem) {
