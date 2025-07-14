@@ -2,15 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "i i",
-    "isi",
-    "rer"
+    "rsr",
+    "iei"
   ],
   "key": {
     "s": {
       "item": "minecraft:netherite_chestplate"
     },
     "i": {
-      "item": "thermal:signalum_plate"
+      "item": "thermal:signalum_ingot"
     },
     "r": {
       "item": "thermal:rf_coil"

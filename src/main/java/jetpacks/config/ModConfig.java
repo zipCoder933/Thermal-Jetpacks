@@ -172,24 +172,24 @@ public class ModConfig {
         // Prevent loading of jetpack configs before common config has been loaded by system.
         if (configEvent.getConfig().getFileName().equals(MOD_ID + "-common.toml")) {
             JetpackType.loadAllConfigs();
+        } else if (configEvent.getConfig().getFileName().equals(MOD_ID + "-client.toml")) {
+            client_invertHoverSneakingBehavior = invertHoverSneakingBehavior.get();
+            client_enableJetpackSounds = enableJetpackSounds.get();
+            client_enableJetpackParticles = enableJetpackParticles.get();
+            client_showThrottle = showThrottle.get();
+            client_showExactEnergy = showExactEnergy.get();
+            client_enableStateMessages = enableStateMessages.get();
+            client_enableJetpackHud = enableJetpackHud.get();
+            client_showHoverState = showHoverState.get();
+            client_showEHoverState = showEHoverState.get();
+            client_showChargerState = showChargerState.get();
+            client_hudTextShadow = hudTextShadow.get();
+            client_hudTextColor = hudTextColor.get();
+            client_hudXOffset = hudXOffset.get();
+            client_hudYOffset = hudYOffset.get();
+            client_hudScale = hudScale.get();
+            client_hudTextPosition = hudTextPosition.get();
         }
-
-        client_invertHoverSneakingBehavior = invertHoverSneakingBehavior.get();
-        client_enableJetpackSounds = enableJetpackSounds.get();
-        client_enableJetpackParticles = enableJetpackParticles.get();
-        client_showThrottle = showThrottle.get();
-        client_showExactEnergy = showExactEnergy.get();
-        client_enableStateMessages = enableStateMessages.get();
-        client_enableJetpackHud = enableJetpackHud.get();
-        client_showHoverState = showHoverState.get();
-        client_showEHoverState = showEHoverState.get();
-        client_showChargerState = showChargerState.get();
-        client_hudTextShadow = hudTextShadow.get();
-        client_hudTextColor = hudTextColor.get();
-        client_hudXOffset = hudXOffset.get();
-        client_hudYOffset = hudYOffset.get();
-        client_hudScale = hudScale.get();
-        client_hudTextPosition = hudTextPosition.get();
     }
 
     //Private constants
