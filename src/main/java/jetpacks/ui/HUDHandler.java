@@ -2,6 +2,7 @@ package jetpacks.ui;
 
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.vertex.PoseStack;
+import jetpacks.handlers.ClientJetpackHandler;
 import jetpacks.item.JetpackItem;
 import jetpacks.util.JetpackUtil;
 import net.minecraft.client.Minecraft;
@@ -27,31 +28,33 @@ public final class HUDHandler {
     private static final IGuiOverlay HUD_OVERLAY = (gui, gfx, partialTick, width, height) -> {
         if (renderJetpackHUD) {
             var minecraft = Minecraft.getInstance();
-            if (ModConfig.enableJetpackHud.get() && !minecraft.options.hideGui && !minecraft.options.renderDebug) {
-                if (minecraft.player != null) {
-                    ItemStack chestplate = JetpackUtil.getItemFromChest(minecraft.player);
-                    Item item = chestplate.getItem();
+            if (ModConfig.client_enableJetpackHud
+                    && !minecraft.options.hideGui
+                    && !minecraft.options.renderDebug
+                    && minecraft.player != null
+                    && minecraft.level != null) {
 
-                    if (!chestplate.isEmpty() && item instanceof JetpackItem) {
+                if (minecraft.level.getGameTime() % 40 == 0) {//Check every 40 ticks
+                    ClientJetpackHandler.global_checkForEquippedJetpack(minecraft.player);
+                }
 
-                        IHUDInfoProvider provider = (IHUDInfoProvider) chestplate.getItem();
-
-                        List<Component> renderStrings = new ArrayList<>();
-                        provider.addHUDInfo(chestplate, renderStrings);
-                        if (renderStrings.isEmpty()) {
-                            return;
-                        }
-                        int count = 0;
-                        PoseStack matrix = gfx.pose();
-                        matrix.pushPose();
-                        matrix.scale(ModConfig.hudScale.get(), ModConfig.hudScale.get(), 1.0F);
-                        Window window = minecraft.getWindow();
-                        for (Component text : renderStrings) {
-                            HUDRenderHelper.drawStringAtPosition(gfx, window, text, count);
-                            count++;
-                        }
-                        matrix.popPose();
+                ItemStack jetpackItem = ClientJetpackHandler.global_getEquippedJetpackStack();
+                if (!jetpackItem.isEmpty() && jetpackItem.getItem() instanceof JetpackItem provider) {
+                    List<Component> renderStrings = new ArrayList<>();
+                    provider.addHUDInfo(jetpackItem, renderStrings);
+                    if (renderStrings.isEmpty()) {
+                        return;
                     }
+                    int count = 0;
+                    PoseStack matrix = gfx.pose();
+                    matrix.pushPose();
+                    matrix.scale(ModConfig.client_hudScale, ModConfig.client_hudScale, 1.0F);
+                    Window window = minecraft.getWindow();
+                    for (Component text : renderStrings) {
+                        HUDRenderHelper.drawStringAtPosition(gfx, window, text, count);
+                        count++;
+                    }
+                    matrix.popPose();
                 }
             }
         }

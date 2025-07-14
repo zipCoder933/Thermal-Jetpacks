@@ -94,7 +94,7 @@ public class SJTextUtil {
     }
 
     public static void addHUDInfoText(ItemStack stack, List<Component> list) {
-        if (ModConfig.showThrottle.get()) {
+        if (ModConfig.client_showThrottle) {
             JetpackItem jetpack = (JetpackItem) stack.getItem();
             list.add(translate("hud", "throttle", jetpack.getThrottle(stack)));
         }
@@ -110,7 +110,7 @@ public class SJTextUtil {
         int percent = (int) Math.ceil((double) jetpack.getEnergy(stack) / (double) jetpack.getCapacity(stack) * 100D);
         Component percentageText = getColoredPercent(percent);
         Component exactText = energy(jetpack.getEnergy(stack));
-        if (ModConfig.showExactEnergy.get()) {
+        if (ModConfig.client_showExactEnergy) {
             return translate("hud", "energyDisplayExtra", percentageText, exactText);
         } else {
             return translate("hud", "energyDisplay", percentageText);
@@ -143,15 +143,15 @@ public class SJTextUtil {
         Component eHoverState = translate("hud", "eHover", jetpack.getJetpackType().getEmergencyHoverMode() ? (jetpack.isEHoverOn(stack) ? on : off) : notAvailable);
         Component chargerState = translate("hud", "charger", jetpack.getJetpackType().getChargerMode() ? (jetpack.isChargerOn(stack) ? on : off) : notAvailable);
         statesTexts.add(engineState);
-        if (ModConfig.showHoverState.get() && jetpack.getJetpackType().getHoverMode()) {
+        if (ModConfig.client_showHoverState && jetpack.getJetpackType().getHoverMode()) {
             statesTexts.add(hoverState);
             stateCount++;
         }
-        if (ModConfig.showEHoverState.get() && jetpack.getJetpackType().getEmergencyHoverMode()) {
+        if (ModConfig.client_showEHoverState && jetpack.getJetpackType().getEmergencyHoverMode()) {
             statesTexts.add(eHoverState);
             stateCount++;
         }
-        if (ModConfig.showChargerState.get() && jetpack.getJetpackType().getChargerMode()) {
+        if (ModConfig.client_showChargerState && jetpack.getJetpackType().getChargerMode()) {
             statesTexts.add(chargerState);
             stateCount++;
         }

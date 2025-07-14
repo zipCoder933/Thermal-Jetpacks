@@ -228,8 +228,8 @@ public class JetpackDataHolder {
         d.chargerMode = false;
 
         d = new JetpackDataHolder("te4", "thermal");
-        d.energyCapacity = 18000000;
-        d.energyUsage = 450;
+        d.energyCapacity = 80000000;
+        d.energyUsage = 850;
         d.energyPerTickIn = 20000;
         d.armorReduction = 8;
         d.armorEnergyPerHit = 160;
@@ -246,8 +246,8 @@ public class JetpackDataHolder {
         d.chargerMode = false;
 
         d = new JetpackDataHolder("te5", "thermal");
-        d.energyCapacity = 40000000;
-        d.energyUsage = 850;
+        d.energyCapacity = 160000000;
+        d.energyUsage = 1600;
         d.energyPerTickIn = 30000;
         d.energyPerTickOut = 30000;
         d.armorReduction = 12;

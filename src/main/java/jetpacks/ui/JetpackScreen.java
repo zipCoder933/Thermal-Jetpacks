@@ -88,8 +88,10 @@ public class JetpackScreen extends Screen {
                     });
             engineButton.setToggled(false);
             engineButton.setTooltip(Tooltip.create(Component.translatable("tooltip." + MOD_ID + ".engine_on")));
-            addRenderableWidget(engineButton);
-            y += 22;
+            if (engineButton.active) {
+                y += 22;
+                addRenderableWidget(engineButton);
+            }
 
             hoverButton = new ToggleImageButton(relX + x, relY + y, 20, 20, 216,
                     40, 20, 0, JETPACK_TEXTURE,
@@ -100,8 +102,10 @@ public class JetpackScreen extends Screen {
             hoverButton.setToggled(false);
             hoverButton.setTooltip(Tooltip.create(Component.translatable("tooltip." + MOD_ID + ".hover_on")));
             hoverButton.active = jetpack.getJetpackType().getHoverMode();
-            addRenderableWidget(hoverButton);
-            y += 22;
+            if (hoverButton.active) {
+                y += 22;
+                addRenderableWidget(hoverButton);
+            }
 
             chargerButton = new ToggleImageButton(relX + x, relY + y, 20, 20, 196,
                     40, 20, 0, JETPACK_TEXTURE,
@@ -112,8 +116,10 @@ public class JetpackScreen extends Screen {
             chargerButton.setToggled(false);
             chargerButton.setTooltip(Tooltip.create(Component.translatable("tooltip." + MOD_ID + ".charger_on")));
             chargerButton.active = jetpack.getJetpackType().getChargerMode();
-            addRenderableWidget(chargerButton);
-            y += 22;
+            if (chargerButton.active) {
+                y += 22;
+                addRenderableWidget(chargerButton);
+            }
 
             ehoverButton = new ToggleImageButton(relX + x, relY + y, 20, 20, 236,
                     40, 20, 0, JETPACK_TEXTURE,
@@ -124,7 +130,10 @@ public class JetpackScreen extends Screen {
             ehoverButton.setToggled(false);
             ehoverButton.setTooltip(Tooltip.create(Component.translatable("tooltip." + MOD_ID + ".ehover_on")));
             ehoverButton.active = jetpack.getJetpackType().getEmergencyHoverMode();
-            addRenderableWidget(ehoverButton);
+            if (ehoverButton.active) {
+                y += 22;
+                addRenderableWidget(ehoverButton);
+            }
         }
 
         addRenderableWidget(slider = new ForgeSlider(

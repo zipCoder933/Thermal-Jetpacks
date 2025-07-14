@@ -40,8 +40,8 @@ public class ClientJetpackHandler {
     /**
      * These static fields are used to save us from having to constantly check if the player is wearing a jetpack
      */
-    private static JetpackItem CLIENT_GLOBAL_JETPACK;
-    private static ItemStack CLIENT_GLOBAL_JETPACK_STACK;
+    private static JetpackItem CLIENT_GLOBAL_JETPACK;//This value can be null
+    private static ItemStack CLIENT_GLOBAL_JETPACK_STACK = ItemStack.EMPTY;//This value must not be null, it can only be empty
 
     public static ItemStack global_checkForEquippedJetpack(Player player) {
         CLIENT_GLOBAL_JETPACK_STACK = JetpackUtil.getItemFromChest(player);
@@ -79,15 +79,13 @@ public class ClientJetpackHandler {
             jetpackStack = global_getEquippedJetpackStack();
             if (jetpack == null) return;
 
-
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.player != null
                     && minecraft.level != null
                     && !minecraft.player.isSpectator()
                     && !minecraft.player.getAbilities().flying) {
 
-                //Make sure the jetpack is still here! Check every 20 ticks
-                if (minecraft.level.getGameTime() % 20 == 0) {
+                if (minecraft.level.getGameTime() % 40 == 0) { //Make sure the jetpack is still here! Check every 40 ticks
                     global_checkForEquippedJetpack(minecraft.player);
                     if (global_getEquippedJetpack() == null) return;
                 }
@@ -96,14 +94,13 @@ public class ClientJetpackHandler {
 
                 if (isJetpackFlying(minecraft.player, jetpackStack, jetpack)) {
                     //Make particles
-                    if (ModConfig.enableJetpackParticles.get()
+                    if (ModConfig.client_enableJetpackParticles
                             && (minecraft.options.particles().get() != ParticleStatus.MINIMAL)) {
                         makeParticles(minecraft, JetpackParticleType.CLOUD);
                     }
-
                     // Play sounds:
                     if (minecraft.level.getGameTime() % DURATION == 0 &&
-                            ModConfig.enableJetpackSounds.get() &&
+                            ModConfig.client_enableJetpackSounds &&
                             !JetpackSoundEvent.playing(minecraft.player.getId())) {
                         minecraft.getSoundManager().play(new JetpackSoundEvent(minecraft.player));
                     }
@@ -118,7 +115,7 @@ public class ClientJetpackHandler {
         if (mc.player != null) {
             //Update the state and send to server
             boolean flyState = mc.player.input.jumping;
-            boolean invertHover = ModConfig.invertHoverSneakingBehavior.get();
+            boolean invertHover = ModConfig.client_invertHoverSneakingBehavior;
             boolean descendState = mc.player.input.shiftKeyDown;
             boolean forwardState = mc.player.input.up;
             boolean backwardState = mc.player.input.down;

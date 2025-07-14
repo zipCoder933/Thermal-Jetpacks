@@ -92,8 +92,8 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
                 && !player.isSpectator()
                 && !player.getAbilities().flying) {
 
-            //Check every 10 ticks to make sure the player is still wearing the jetpack
-            if (level.getGameTime() % 10 != 0)
+            //Check every 20 ticks to make sure the player is still wearing the jetpack
+            if (level.getGameTime() % 20 != 0)
                 inSlot = JetpackUtil.checkTickForEquippedSlot(vanillaIndex, stack, player);
             if (!inSlot) return;
 
@@ -318,7 +318,7 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         player.setDeltaMovement(motion.get(Direction.Axis.X), y, motion.get(Direction.Axis.Z));
     }
 
-    final float HOVER_FALL = 0.1f;
+    final float HOVER_FALL = 0.15f;
 
     @Override
     public boolean isEnchantable(ItemStack itemStack) {

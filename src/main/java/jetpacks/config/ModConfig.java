@@ -155,6 +155,7 @@ public class ModConfig {
 
     /**
      * Send the config data from the server to the client
+     *
      * @param player
      */
     public static void sendServerConfigFiles(Player player) {
@@ -172,23 +173,58 @@ public class ModConfig {
         if (configEvent.getConfig().getFileName().equals(MOD_ID + "-common.toml")) {
             JetpackType.loadAllConfigs();
         }
+
+        client_invertHoverSneakingBehavior = invertHoverSneakingBehavior.get();
+        client_enableJetpackSounds = enableJetpackSounds.get();
+        client_enableJetpackParticles = enableJetpackParticles.get();
+        client_showThrottle = showThrottle.get();
+        client_showExactEnergy = showExactEnergy.get();
+        client_enableStateMessages = enableStateMessages.get();
+        client_enableJetpackHud = enableJetpackHud.get();
+        client_showHoverState = showHoverState.get();
+        client_showEHoverState = showEHoverState.get();
+        client_showChargerState = showChargerState.get();
+        client_hudTextShadow = hudTextShadow.get();
+        client_hudTextColor = hudTextColor.get();
+        client_hudXOffset = hudXOffset.get();
+        client_hudYOffset = hudYOffset.get();
+        client_hudScale = hudScale.get();
+        client_hudTextPosition = hudTextPosition.get();
     }
 
-    // Client
-    public static ForgeConfigSpec.BooleanValue invertHoverSneakingBehavior;
-    public static ForgeConfigSpec.BooleanValue enableJetpackSounds;
-    public static ForgeConfigSpec.BooleanValue enableJetpackParticles;
-    public static ForgeConfigSpec.BooleanValue showThrottle;
-    public static ForgeConfigSpec.BooleanValue showExactEnergy;
-    public static ForgeConfigSpec.BooleanValue enableStateMessages;
-    public static ForgeConfigSpec.BooleanValue enableJetpackHud;
-    public static ForgeConfigSpec.BooleanValue showHoverState;
-    public static ForgeConfigSpec.BooleanValue showEHoverState;
-    public static ForgeConfigSpec.BooleanValue showChargerState;
-    public static ForgeConfigSpec.BooleanValue hudTextShadow;
-    public static ForgeConfigSpec.IntValue hudTextColor;
-    public static ForgeConfigSpec.IntValue hudXOffset;
-    public static ForgeConfigSpec.IntValue hudYOffset;
-    public static ForgeConfigSpec.LongValue hudScale;
-    public static ForgeConfigSpec.EnumValue<ConfigDefaults.HUDPosition> hudTextPosition;
+    //Private constants
+    private static ForgeConfigSpec.BooleanValue invertHoverSneakingBehavior;
+    private static ForgeConfigSpec.BooleanValue enableJetpackSounds;
+    private static ForgeConfigSpec.BooleanValue enableJetpackParticles;
+    private static ForgeConfigSpec.BooleanValue showThrottle;
+    private static ForgeConfigSpec.BooleanValue showExactEnergy;
+    private static ForgeConfigSpec.BooleanValue enableStateMessages;
+    private static ForgeConfigSpec.BooleanValue enableJetpackHud;
+    private static ForgeConfigSpec.BooleanValue showHoverState;
+    private static ForgeConfigSpec.BooleanValue showEHoverState;
+    private static ForgeConfigSpec.BooleanValue showChargerState;
+    private static ForgeConfigSpec.BooleanValue hudTextShadow;
+    private static ForgeConfigSpec.IntValue hudTextColor;
+    private static ForgeConfigSpec.IntValue hudXOffset;
+    private static ForgeConfigSpec.IntValue hudYOffset;
+    private static ForgeConfigSpec.LongValue hudScale;
+    private static ForgeConfigSpec.EnumValue<ConfigDefaults.HUDPosition> hudTextPosition;
+
+    //Public constants
+    public static boolean client_invertHoverSneakingBehavior;
+    public static boolean client_enableJetpackSounds;
+    public static boolean client_enableJetpackParticles;
+    public static boolean client_showThrottle;
+    public static boolean client_showExactEnergy;
+    public static boolean client_enableStateMessages;
+    public static boolean client_enableJetpackHud;
+    public static boolean client_showHoverState;
+    public static boolean client_showEHoverState;
+    public static boolean client_showChargerState;
+    public static boolean client_hudTextShadow;
+    public static int client_hudTextColor;
+    public static int client_hudXOffset;
+    public static int client_hudYOffset;
+    public static long client_hudScale;
+    public static ConfigDefaults.HUDPosition client_hudTextPosition;
 }

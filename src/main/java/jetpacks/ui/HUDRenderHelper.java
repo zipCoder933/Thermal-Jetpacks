@@ -17,12 +17,12 @@ public class HUDRenderHelper {
         int windowScaleHeight = window.getGuiScaledHeight();
         int windowScaleWidth = window.getGuiScaledWidth();
 
-        ConfigDefaults.HUDPosition position = ModConfig.hudTextPosition.get();
-        int color = ModConfig.hudTextColor.get();
-        int xOffset = ModConfig.hudXOffset.get();
-        int yOffset = ModConfig.hudYOffset.get();
-        long hudScale = ModConfig.hudScale.get();
-        boolean hudTextShadow = ModConfig.hudTextShadow.get();
+        ConfigDefaults.HUDPosition position = ModConfig.client_hudTextPosition;
+        int color = ModConfig.client_hudTextColor;
+        int xOffset = ModConfig.client_hudXOffset;
+        int yOffset = ModConfig.client_hudYOffset;
+        long hudScale = ModConfig.client_hudScale;
+        boolean hudTextShadow = ModConfig.client_hudTextShadow;
 
         int screenHeight = (int) (windowScaleHeight / hudScale);
         int screenWidth = (int) (windowScaleWidth / hudScale);
