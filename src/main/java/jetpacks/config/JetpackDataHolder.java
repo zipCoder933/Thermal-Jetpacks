@@ -96,7 +96,7 @@ public class JetpackDataHolder {
         d.sprintSpeedModifier = 2.5D;
         d.hoverMode = true;
         d.emergencyHoverMode = true;
-        d.chargerMode = true;
+        d.chargerMode = false;
 
 
         d = new JetpackDataHolder("mek1", "mekanism");
@@ -262,7 +262,7 @@ public class JetpackDataHolder {
         d.sprintEnergyModifier = 4.0D;
         d.hoverMode = true;
         d.emergencyHoverMode = true;
-        d.chargerMode = true;
+        d.chargerMode = false;
 
         d = new JetpackDataHolder("te6", "thermal");
         d.energyCapacity = 50000000;
@@ -281,7 +281,7 @@ public class JetpackDataHolder {
         d.sprintEnergyModifier = 6.0D;
         d.hoverMode = true;
         d.emergencyHoverMode = true;
-        d.chargerMode = true;
+        d.chargerMode = false;
 
     }
 }
