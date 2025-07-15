@@ -10,7 +10,7 @@
       "tag": "forge:plates/enderium"
     },
     "C": {
-      "item": "tjetpacks:combustion_chamber"
+      "item": "tjetpacks:combustion_chamber_hard"
     },
     "t": {
       "item": "thermal:lightning_charge"

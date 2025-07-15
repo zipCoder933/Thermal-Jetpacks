@@ -60,6 +60,8 @@ public class RegistryHandler {
     public static final RegistryObject<Item> CRYOGENIC_CRYSTAL = ITEMS.register("cryogenic_crystal", () -> new Item(new Item.Properties()));
     //    public static final RegistryObject<SJItem> UNIT_CRYOGENIC = ITEMS.register("unit_cryogenic", SJItem::new);
     public static final RegistryObject<Item> COMBUSTION_CHAMBER = ITEMS.register("combustion_chamber", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COMBUSTION_CHAMBER_HARD = ITEMS.register("combustion_chamber_hard", () -> new Item(new Item.Properties()));
+
 
     public static final RegistryObject<Item> THRUSTER_TE1 = ITEMS.register("thruster_te1", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> THRUSTER_TE2 = ITEMS.register("thruster_te2", () -> new Item(new Item.Properties()));

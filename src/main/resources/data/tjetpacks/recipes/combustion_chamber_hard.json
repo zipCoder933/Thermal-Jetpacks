@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "b b",
     "bsb",
-    "b b"
+    "bFb",
+    "bsb"
   ],
   "key": {
     "b": {
@@ -11,10 +11,13 @@
     },
     "s": {
       "item": "thermal:redstone_servo"
+    },
+    "F": {
+      "item": "tjetpacks:combustion_chamber"
     }
   },
   "result": {
-    "item": "tjetpacks:combustion_chamber",
+    "item": "tjetpacks:combustion_chamber_hard",
     "count": 1
   }
 }
