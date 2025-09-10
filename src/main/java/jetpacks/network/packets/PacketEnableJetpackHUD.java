@@ -1,6 +1,6 @@
 package jetpacks.network.packets;
 
-import jetpacks.ui.HUDHandler;
+import jetpacks.client.ui.HUDHandler;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 

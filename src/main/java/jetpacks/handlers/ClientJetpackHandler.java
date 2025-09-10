@@ -1,13 +1,12 @@
 package jetpacks.handlers;
 
-import jetpacks.RegistryHandler;
 import jetpacks.ThermalJetpacks;
 import jetpacks.config.ModConfig;
 import jetpacks.item.JetpackItem;
 import jetpacks.item.JetpackType;
 import jetpacks.network.NetworkHandler;
 import jetpacks.network.packets.PacketUpdateInput;
-import jetpacks.particle.JetpackParticleType;
+import jetpacks.util.JetpackParticleType;
 import jetpacks.util.JetpackUtil;
 import jetpacks.util.Pos3D;
 import net.minecraft.client.Minecraft;

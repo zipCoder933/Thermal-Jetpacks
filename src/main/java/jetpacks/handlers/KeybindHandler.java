@@ -4,7 +4,7 @@ import com.mojang.blaze3d.platform.InputConstants;
 import jetpacks.item.JetpackItem;
 import jetpacks.network.NetworkHandler;
 import jetpacks.network.packets.*;
-import jetpacks.ui.JetpackScreen;
+import jetpacks.client.ui.JetpackScreen;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;

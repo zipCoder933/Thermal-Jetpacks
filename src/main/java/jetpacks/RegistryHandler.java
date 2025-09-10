@@ -58,7 +58,6 @@ public class RegistryHandler {
 
     public static final RegistryObject<Item> LEATHER_STRAP = ITEMS.register("leather_strap", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CRYOGENIC_CRYSTAL = ITEMS.register("cryogenic_crystal", () -> new Item(new Item.Properties()));
-    //    public static final RegistryObject<SJItem> UNIT_CRYOGENIC = ITEMS.register("unit_cryogenic", SJItem::new);
     public static final RegistryObject<Item> COMBUSTION_CHAMBER = ITEMS.register("combustion_chamber", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> COMBUSTION_CHAMBER_HARD = ITEMS.register("combustion_chamber_hard", () -> new Item(new Item.Properties()));
 
@@ -81,33 +80,9 @@ public class RegistryHandler {
     //    public static final RegistryObject<JetpackItem> JETPACK_TE3_ARMORED = ITEMS.register("jetpack_te3_armored", () -> new JetpackItem(JetpackType.TE3_ARMORED));
     //    public static final RegistryObject<JetpackItem> JETPACK_TE4_ARMORED = ITEMS.register("jetpack_te4_armored", () -> new JetpackItem(JetpackType.TE4_ARMORED));
 
-
     //    public static final RegistryObject<JetpackItem> JETPACK_CREATIVE = ITEMS.register("jetpack_creative", () -> new JetpackItem(JetpackType.CREATIVE, true));
     public static final RegistryObject<JetpackItem> JETPACK_CREATIVE_ARMORED = ITEMS.register("jetpack_creative_armored", () -> new JetpackItem(JetpackType.CREATIVE_ARMORED, true));
 
-//    public static final RegistryObject<SJItem> ARMORPLATING_TE1 = ITEMS.register("armorplating_te1", SJItem::new);
-//    public static final RegistryObject<SJItem> ARMORPLATING_TE2 = ITEMS.register("armorplating_te2", SJItem::new);
-//    public static final RegistryObject<SJItem> ARMORPLATING_TE3 = ITEMS.register("armorplating_te3", SJItem::new);
-//    public static final RegistryObject<SJItem> ARMORPLATING_TE4 = ITEMS.register("armorplating_te4", SJItem::new);
-//    public static final RegistryObject<SJItem> ARMORPLATING_TE5 = ITEMS.register("armorplating_te5", SJItem::new);
-//    public static final RegistryObject<SJItem> ARMORPLATING_TE5_ENDERIUM = ITEMS.register("armorplating_te5_enderium", SJItem::new);
-
-//    public static final RegistryObject<JetpackItem> JETPACK_MEK1 = ITEMS.register("jetpack_mek1", () -> new JetpackItem(JetpackType.MEK1));
-//    public static final RegistryObject<JetpackItem> JETPACK_MEK1_ARMORED = ITEMS.register("jetpack_mek1_armored", () -> new JetpackItem(JetpackType.MEK1_ARMORED));
-//    public static final RegistryObject<JetpackItem> JETPACK_MEK2 = ITEMS.register("jetpack_mek2", () -> new JetpackItem(JetpackType.MEK2));
-//    public static final RegistryObject<JetpackItem> JETPACK_MEK2_ARMORED = ITEMS.register("jetpack_mek2_armored", () -> new JetpackItem(JetpackType.MEK2_ARMORED));
-//    public static final RegistryObject<JetpackItem> JETPACK_MEK3 = ITEMS.register("jetpack_mek3", () -> new JetpackItem(JetpackType.MEK3));
-//    public static final RegistryObject<JetpackItem> JETPACK_MEK3_ARMORED = ITEMS.register("jetpack_mek3_armored", () -> new JetpackItem(JetpackType.MEK3_ARMORED));
-//    public static final RegistryObject<JetpackItem> JETPACK_MEK4 = ITEMS.register("jetpack_mek4", () -> new JetpackItem(JetpackType.MEK4));
-//    public static final RegistryObject<JetpackItem> JETPACK_MEK4_ARMORED = ITEMS.register("jetpack_mek4_armored", () -> new JetpackItem(JetpackType.MEK4_ARMORED));
-//    public static final RegistryObject<SJItem> ARMORPLATING_MEK1 = ITEMS.register("armorplating_mek1", SJItem::new);
-//    public static final RegistryObject<SJItem> ARMORPLATING_MEK2 = ITEMS.register("armorplating_mek2", SJItem::new);
-//    public static final RegistryObject<SJItem> ARMORPLATING_MEK3 = ITEMS.register("armorplating_mek3", SJItem::new);
-//    public static final RegistryObject<SJItem> ARMORPLATING_MEK4 = ITEMS.register("armorplating_mek4", SJItem::new);
-//    public static final RegistryObject<SJItem> THRUSTER_MEK1 = ITEMS.register("thruster_mek1", SJItem::new);
-//    public static final RegistryObject<SJItem> THRUSTER_MEK2 = ITEMS.register("thruster_mek2", SJItem::new);
-//    public static final RegistryObject<SJItem> THRUSTER_MEK3 = ITEMS.register("thruster_mek3", SJItem::new);
-//    public static final RegistryObject<SJItem> THRUSTER_MEK4 = ITEMS.register("thruster_mek4", SJItem::new);
 
 
 }

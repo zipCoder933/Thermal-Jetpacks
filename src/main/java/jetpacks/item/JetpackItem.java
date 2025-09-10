@@ -1,9 +1,8 @@
 package jetpacks.item;
 
 import jetpacks.I_ServerGamePacketListenerImpl;
-import jetpacks.model.JetpackModelLayers;
+import jetpacks.client.JetpackModelLayers;
 import jetpacks.util.*;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -30,7 +29,7 @@ import jetpacks.energy.EnergyStorageImpl;
 import jetpacks.energy.IEnergyContainer;
 import jetpacks.handlers.CommonJetpackHandler;
 import jetpacks.RegistryHandler;
-import jetpacks.ui.IHUDInfoProvider;
+import jetpacks.client.ui.IHUDInfoProvider;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -134,7 +133,7 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
 
     public void setEngineOn(ItemStack stack, Player player, boolean engineOn) {
         NBTUtil.flipBoolean(stack, Constants.TAG_ENGINE);
-        Component msg = SJTextUtil.getStateToggle("engineMode", engineOn);
+        Component msg = TextUtils.getStateToggle("engineMode", engineOn);
         player.displayClientMessage(msg, true);
     }
 
@@ -145,7 +144,7 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
     public void setHoverOn(ItemStack stack, Player player, boolean hoverOn) {
         if (jetpackType.getHoverMode()) {
             NBTUtil.flipBoolean(stack, Constants.TAG_HOVER);
-            Component msg = SJTextUtil.getStateToggle("hoverMode", hoverOn);
+            Component msg = TextUtils.getStateToggle("hoverMode", hoverOn);
             player.displayClientMessage(msg, true);
         }
     }
@@ -157,7 +156,7 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
     public void setEHoverOn(ItemStack stack, Player player, boolean eHoverOn) {
         if (jetpackType.getEmergencyHoverMode()) {
             NBTUtil.flipBoolean(stack, Constants.TAG_E_HOVER);
-            Component msg = SJTextUtil.getStateToggle("emergencyHoverMode", eHoverOn);
+            Component msg = TextUtils.getStateToggle("emergencyHoverMode", eHoverOn);
             player.displayClientMessage(msg, true);
         }
     }
@@ -166,7 +165,7 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
         if (jetpackType.getHoverMode()) {
             NBTUtil.setBoolean(stack, Constants.TAG_ENGINE, true);
             NBTUtil.setBoolean(stack, Constants.TAG_HOVER, true);
-            Component msg = SJTextUtil.getEmergencyText();
+            Component msg = TextUtils.getEmergencyText();
             player.displayClientMessage(msg, true);
         }
     }
@@ -178,7 +177,7 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
     public void setChargerOn(ItemStack stack, Player player, boolean chargerOn) {
         if (jetpackType.getChargerMode()) {
             NBTUtil.flipBoolean(stack, Constants.TAG_CHARGER);
-            Component msg = SJTextUtil.getStateToggle("chargerMode", chargerOn);
+            Component msg = TextUtils.getStateToggle("chargerMode", chargerOn);
             player.displayClientMessage(msg, true);
         }
     }
@@ -210,11 +209,11 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level levelIn, List<Component> tooltip, TooltipFlag flagIn) {
         if (ForgeCapabilities.ENERGY == null) return;
-        SJTextUtil.addBaseInfo(stack, tooltip);
+        TextUtils.addBaseInfo(stack, tooltip);
         if (KeyboardUtil.isHoldingShift()) {
-            SJTextUtil.addShiftInfo(stack, tooltip);
+            TextUtils.addShiftInfo(stack, tooltip);
         } else {
-            tooltip.add(SJTextUtil.getShiftText());
+            tooltip.add(TextUtils.getShiftText());
         }
     }
 
@@ -413,7 +412,7 @@ public class JetpackItem extends ArmorItem implements IHUDInfoProvider, IEnergyC
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addHUDInfo(ItemStack stack, List<Component> list) {
-        SJTextUtil.addHUDInfoText(stack, list);
+        TextUtils.addHUDInfoText(stack, list);
     }
 
     @Override

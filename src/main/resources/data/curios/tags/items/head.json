@@ -2,27 +2,11 @@
   "replace": "false",
   "values": [
     {
-      "id": "cyclic:pilot_goggles_gold",
+      "id": "tjetpacks:pilot_goggles_gold",
       "required": false
     },
     {
-      "id": "cyclic:pilot_goggles_iron",
-      "required": false
-    },
-    {
-      "id": "cyclic:glowing_helmet",
-      "required": false
-    },
-    {
-      "id": "cyclic:charm_antipotion",
-      "required": false
-    },
-    {
-      "id": "cyclic:charm_boostpotion",
-      "required": false
-    },
-    {
-      "id": "cyclic:charm_stone",
+      "id": "tjetpacks:pilot_goggles_iron",
       "required": false
     }
   ]

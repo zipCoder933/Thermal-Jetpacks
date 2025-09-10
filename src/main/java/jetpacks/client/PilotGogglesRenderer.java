@@ -1,9 +1,10 @@
-package jetpacks.integration;
+package jetpacks.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import jetpacks.client.JetpackModel;
-import jetpacks.client.JetpackModelLayers;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
@@ -14,9 +15,9 @@ import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.client.ICurioRenderer;
 
-public class JetpackRenderer implements ICurioRenderer {
+public class PilotGogglesRenderer implements ICurioRenderer {
 
-    public JetpackRenderer(ResourceLocation texture) {
+    public PilotGogglesRenderer(ResourceLocation texture) {
         this.texture = texture;
     }
 
@@ -24,10 +25,9 @@ public class JetpackRenderer implements ICurioRenderer {
 
     @Override
     public <T extends LivingEntity, M extends EntityModel<T>> void render(ItemStack stack, SlotContext slotContext, PoseStack matrixStack, RenderLayerParent<T, M> renderLayerParent, MultiBufferSource renderTypeBuffer, int light, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        JetpackModel<LivingEntity> model = JetpackModelLayers.JETPACK_MODEL;
+        HumanoidModel<LivingEntity> model = new HumanoidModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR));
         model.setupAnim(slotContext.entity(), limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-        model.prepareMobModel(slotContext.entity(), limbSwing, limbSwingAmount, partialTicks);
-        ICurioRenderer.followBodyRotations(slotContext.entity(), model);
-        model.renderToBuffer(matrixStack, ItemRenderer.getFoilBuffer(renderTypeBuffer, model.renderType(texture), false, stack.hasFoil()), light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+        ICurioRenderer.followHeadRotations(slotContext.entity(), model.getHead());
+        model.getHead().render(matrixStack, ItemRenderer.getArmorFoilBuffer(renderTypeBuffer, model.renderType(texture), false, stack.hasFoil()), light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
     }
 }

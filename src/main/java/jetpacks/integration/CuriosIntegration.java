@@ -1,5 +1,6 @@
 package jetpacks.integration;
 
+import jetpacks.client.PilotGogglesRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;

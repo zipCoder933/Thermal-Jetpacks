@@ -494,10 +494,10 @@
 [26May2025 12:34:00.423] [modloading-worker-0/DEBUG] [cofh_core/]: Channel cofh_core:general, Register packet, ID: 97
 [26May2025 12:34:00.439] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for tjetpacks
 [26May2025 12:34:00.439] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing jetpacks.config.ModConfig to MOD
-[26May2025 12:34:00.443] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing jetpacks.datagen.SJDataGenerator to MOD
+[26May2025 12:34:00.443] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing jetpacks.datagen.ModDataGenerator to MOD
 [26May2025 12:34:00.450] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing jetpacks.handlers.CommonJetpackHandler to MOD
 [26May2025 12:34:00.451] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing jetpacks.handlers.KeybindModBusHandler to MOD
-[26May2025 12:34:00.458] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing jetpacks.model.JetpackModelLayers to MOD
+[26May2025 12:34:00.458] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing jetpacks.client.JetpackModelLayers to MOD
 [26May2025 12:34:00.461] [modloading-worker-0/DEBUG] [mixin/]: Mixing MultiPlayerGameModeMixin from mixins.cofhcore.json into net.minecraft.client.multiplayer.MultiPlayerGameMode
 [26May2025 12:34:00.506] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file cofh_core-client.toml for cofh_core tracking
 [26May2025 12:34:00.513] [modloading-worker-0/DEBUG] [mezz.jei.common.platform.Services/]: Loaded mezz.jei.forge.platform.PlatformHelper@1fdf664 for service interface mezz.jei.common.platform.IPlatformHelper

@@ -2,7 +2,7 @@ package jetpacks.network.packets;
 
 import jetpacks.item.JetpackItem;
 import jetpacks.network.NetworkHandler;
-import jetpacks.ui.JetpackScreen;
+import jetpacks.client.ui.JetpackScreen;
 import jetpacks.util.JetpackUtil;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;

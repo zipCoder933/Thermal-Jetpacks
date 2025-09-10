@@ -1,6 +1,6 @@
 package jetpacks.item;
 
-import jetpacks.util.SJTextUtil;
+import jetpacks.util.TextUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -40,6 +40,6 @@ public class PilotGogglesItem extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level levelIn, List<Component> tooltip, TooltipFlag flagIn) {
-        tooltip.add(SJTextUtil.translate("tooltip", "pilot_goggles"));
+        tooltip.add(TextUtils.translate("tooltip", "pilot_goggles"));
     }
 }

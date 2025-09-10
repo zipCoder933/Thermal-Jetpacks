@@ -7,9 +7,9 @@ import jetpacks.handlers.KeybindHandler;
 import jetpacks.integration.CuriosIntegration;
 import jetpacks.item.JetpackItem;
 import jetpacks.item.PilotGogglesItem;
-import jetpacks.item.SJItemGroup;
+import jetpacks.item.ModItemGroup;
 import jetpacks.network.NetworkHandler;
-import jetpacks.ui.HUDHandler;
+import jetpacks.client.ui.HUDHandler;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -127,7 +127,7 @@ Tab Title: itemGroup.tjetpacks.main
         MinecraftForge.EVENT_BUS.register(this);
 //        MinecraftForge.EVENT_BUS.register(new JetpackCraftingEvents());
         MinecraftForge.EVENT_BUS.register(new CommonJetpackHandler());
-//        MinecraftForge.EVENT_BUS.register(new SJSounds());
+//        MinecraftForge.EVENT_BUS.register(new ModSounds());
 
         // Register the item to a creative tab
         bus.addListener(ThermalJetpacks::addCreative);
@@ -139,7 +139,7 @@ Tab Title: itemGroup.tjetpacks.main
     public static void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == BuiltInRegistries.CREATIVE_MODE_TAB.get(new ResourceLocation("thermal", "thermal.tools"))) {
             System.out.println("Adding jetpacks to creative tab");
-            SJItemGroup.registerItems(event);
+            ModItemGroup.registerItems(event);
         }
     }
 
@@ -163,7 +163,7 @@ Tab Title: itemGroup.tjetpacks.main
         ResourceLocation targetTabId = new ResourceLocation("thermal", "thermal.tools");
         boolean tabExists = BuiltInRegistries.CREATIVE_MODE_TAB.containsKey(targetTabId);
         if (!tabExists) {
-            CREATIVE_TAB.register(MOD_ID + ".main", SJItemGroup::new);
+            CREATIVE_TAB.register(MOD_ID + ".main", ModItemGroup::new);
             CREATIVE_TAB.register(FMLJavaModLoadingContext.get().getModEventBus());
         }
 

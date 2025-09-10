@@ -41,7 +41,7 @@ public class ModConfig {
     }
 
     private static void setupClientConfig() {
-        CLIENT_BUILDER.comment("Simply Jetpacks 2 - Client Configurations").push(MOD_ID + "-jetpack-client");
+        CLIENT_BUILDER.comment("Thermal Jetpacks - Client Configurations").push(MOD_ID + "-jetpack-client");
 
         CLIENT_BUILDER.comment("Controls Configurations").push("controls");
 
@@ -142,13 +142,13 @@ public class ModConfig {
     }
 
     private static void setupCommonConfig() {
-        COMMON_BUILDER.comment("Simply Jetpacks 2 - Common Configurations").push(MOD_ID + "-jetpack-common");
+        COMMON_BUILDER.comment("Thermal Jetpacks - Common Configurations").push(MOD_ID + "-jetpack-common");
         COMMON_BUILDER.comment("Jetpack Tuning Configurations").push("tuning");
         JetpackConfig.createJetpackConfig(COMMON_BUILDER);
     }
 
     private static void setupServerConfig() {
-        SERVER_BUILDER.comment("Simply Jetpacks 2 - Server Configurations").push(MOD_ID + "-jetpack-server");
+        SERVER_BUILDER.comment("Thermal Jetpacks - Server Configurations").push(MOD_ID + "-jetpack-server");
         //JetpackConfig.createJetpackConfig(SERVER_BUILDER);
         SERVER_BUILDER.pop();
     }
