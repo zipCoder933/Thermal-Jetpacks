@@ -21,30 +21,23 @@ import static jetpacks.ThermalJetpacks.MOD_ID;
 @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class KeybindHandler {
 
-    public static KeyMapping JETPACK_GUI_KEY = new KeyMapping("keybind." + MOD_ID + ".jetpack_gui", GLFW.GLFW_KEY_K, "keybind." + MOD_ID + ".category");
-    public static KeyMapping JETPACK_ENGINE_KEY = new KeyMapping("keybind." + MOD_ID + ".jetpack_engine", GLFW.GLFW_KEY_J, "keybind." + MOD_ID + ".category");
+    public static KeyMapping JETPACK_GUI_KEY = new KeyMapping("keybind." + MOD_ID + ".jetpack_gui", GLFW.GLFW_KEY_J, "keybind." + MOD_ID + ".category");
+    public static KeyMapping JETPACK_ENGINE_KEY = new KeyMapping("keybind." + MOD_ID + ".jetpack_engine", GLFW.GLFW_KEY_UNKNOWN, "keybind." + MOD_ID + ".category");
     public static KeyMapping JETPACK_HOVER_KEY = new KeyMapping("keybind." + MOD_ID + ".jetpack_hover", GLFW.GLFW_KEY_H, "keybind." + MOD_ID + ".category");
     public static KeyMapping JETPACK_EHOVER_KEY = new KeyMapping("keybind." + MOD_ID + ".jetpack_ehover", GLFW.GLFW_KEY_UNKNOWN, "keybind." + MOD_ID + ".category");
     public static KeyMapping JETPACK_CHARGER_KEY = new KeyMapping("keybind." + MOD_ID + ".jetpack_charger", GLFW.GLFW_KEY_UNKNOWN, "keybind." + MOD_ID + ".category");
-    public static KeyMapping JETPACK_THROTTLE_INCREASE = new KeyMapping("keybind." + MOD_ID + ".jetpack_throttle_increase", GLFW.GLFW_KEY_PERIOD, "keybind." + MOD_ID + ".category");
-    public static KeyMapping JETPACK_THROTTLE_DECREASE = new KeyMapping("keybind." + MOD_ID + ".jetpack_throttle_decrease", GLFW.GLFW_KEY_COMMA, "keybind." + MOD_ID + ".category");
+    public static KeyMapping JETPACK_THROTTLE_INCREASE = new KeyMapping("keybind." + MOD_ID + ".jetpack_throttle_increase", GLFW.GLFW_KEY_UNKNOWN, "keybind." + MOD_ID + ".category");
+    public static KeyMapping JETPACK_THROTTLE_DECREASE = new KeyMapping("keybind." + MOD_ID + ".jetpack_throttle_decrease", GLFW.GLFW_KEY_UNKNOWN, "keybind." + MOD_ID + ".category");
 
 
     @SubscribeEvent
     public static void registerBindings(RegisterKeyMappingsEvent event) {
-        KeybindHandler.JETPACK_GUI_KEY = new KeyMapping("keybind.tjetpacks.jetpack_gui", GLFW.GLFW_KEY_K, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_GUI_KEY);
-        KeybindHandler.JETPACK_ENGINE_KEY = new KeyMapping("keybind.tjetpacks.jetpack_engine", GLFW.GLFW_KEY_J, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_ENGINE_KEY);
-        KeybindHandler.JETPACK_HOVER_KEY = new KeyMapping("keybind.tjetpacks.jetpack_hover", GLFW.GLFW_KEY_H, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_HOVER_KEY);
-        KeybindHandler.JETPACK_EHOVER_KEY = new KeyMapping("keybind.tjetpacks.jetpack_ehover", GLFW.GLFW_KEY_UNKNOWN, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_EHOVER_KEY);
-        KeybindHandler.JETPACK_CHARGER_KEY = new KeyMapping("keybind.tjetpacks.jetpack_charger", GLFW.GLFW_KEY_UNKNOWN, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_CHARGER_KEY);
-        KeybindHandler.JETPACK_THROTTLE_INCREASE = new KeyMapping("keybind.tjetpacks.jetpack_throttle_increase", GLFW.GLFW_KEY_PERIOD, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_THROTTLE_INCREASE);
-        KeybindHandler.JETPACK_THROTTLE_DECREASE = new KeyMapping("keybind.tjetpacks.jetpack_throttle_decrease", GLFW.GLFW_KEY_COMMA, "keybind.tjetpacks.category");
         event.register(KeybindHandler.JETPACK_THROTTLE_DECREASE);
     }
 

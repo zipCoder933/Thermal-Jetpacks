@@ -55,34 +55,22 @@ public class RegistryHandler {
 
     public static final RegistryObject<PilotGogglesItem> PILOT_GOGGLES_GOLD = ITEMS.register("pilot_goggles_gold", () -> new PilotGogglesItem("gold"));
     public static final RegistryObject<PilotGogglesItem> PILOT_GOGGLES_IRON = ITEMS.register("pilot_goggles_iron", () -> new PilotGogglesItem("iron"));
-
     public static final RegistryObject<Item> LEATHER_STRAP = ITEMS.register("leather_strap", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CRYOGENIC_CRYSTAL = ITEMS.register("cryogenic_crystal", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> COMBUSTION_CHAMBER = ITEMS.register("combustion_chamber", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> COMBUSTION_CHAMBER_HARD = ITEMS.register("combustion_chamber_hard", () -> new Item(new Item.Properties()));
 
-
     public static final RegistryObject<Item> THRUSTER_TE1 = ITEMS.register("thruster_te1", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> THRUSTER_TE2 = ITEMS.register("thruster_te2", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> THRUSTER_TE3 = ITEMS.register("thruster_te3", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> THRUSTER_TE4 = ITEMS.register("thruster_te4", () -> new Item(new Item.Properties()));
-    //    public static final RegistryObject<Item> THRUSTER_TE5 = ITEMS.register("thruster_te5", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLUX_CHESTPLATE = ITEMS.register("flux_chestplate", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<JetpackItem> JETPACK_TE1 = ITEMS.register("jetpack_te1", () -> new JetpackItem(JetpackType.TE1, false));
     public static final RegistryObject<JetpackItem> JETPACK_TE2 = ITEMS.register("jetpack_te2", () -> new JetpackItem(JetpackType.TE2, false));
     public static final RegistryObject<JetpackItem> JETPACK_TE3 = ITEMS.register("jetpack_te3", () -> new JetpackItem(JetpackType.TE3, false));
     public static final RegistryObject<JetpackItem> JETPACK_TE4 = ITEMS.register("jetpack_te4", () -> new JetpackItem(JetpackType.TE4, false));
-    //    public static final RegistryObject<JetpackItem> JETPACK_TE5 = ITEMS.register("jetpack_te5", () -> new JetpackItem(JetpackType.TE5, JetpackArmorMaterial.JETPLATE, false));
     public static final RegistryObject<JetpackItem> JETPACK_TE5_ARMORED = ITEMS.register("jetpack_te5_enderium", () -> new JetpackItem(JetpackType.TE5_ARMORED, JetpackArmorMaterial.JETPLATE, false));
-    //    public static final RegistryObject<JetpackItem> JETPACK_TE1_ARMORED = ITEMS.register("jetpack_te1_armored", () -> new JetpackItem(JetpackType.TE1_ARMORED));
-    //    public static final RegistryObject<JetpackItem> JETPACK_TE2_ARMORED = ITEMS.register("jetpack_te2_armored", () -> new JetpackItem(JetpackType.TE2_ARMORED));
-    //    public static final RegistryObject<JetpackItem> JETPACK_TE3_ARMORED = ITEMS.register("jetpack_te3_armored", () -> new JetpackItem(JetpackType.TE3_ARMORED));
-    //    public static final RegistryObject<JetpackItem> JETPACK_TE4_ARMORED = ITEMS.register("jetpack_te4_armored", () -> new JetpackItem(JetpackType.TE4_ARMORED));
-
-    //    public static final RegistryObject<JetpackItem> JETPACK_CREATIVE = ITEMS.register("jetpack_creative", () -> new JetpackItem(JetpackType.CREATIVE, true));
     public static final RegistryObject<JetpackItem> JETPACK_CREATIVE_ARMORED = ITEMS.register("jetpack_creative_armored", () -> new JetpackItem(JetpackType.CREATIVE_ARMORED, true));
-
-
 
 }
