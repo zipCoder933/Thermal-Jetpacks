@@ -18,7 +18,6 @@ import static jetpacks.ThermalJetpacks.MOD_ID;
 public enum JetpackArmorMaterial implements ArmorMaterial {
 
 	PILOT_GOGGLES("pilot_goggles", 0, new int[] {0, 0, 0, 0}, 0, () -> Ingredient.of(Items.LEATHER), "item.armor.equip_leather", 0.0f, 0.0f),
-	POTATO("potato", 0, new int[] {0, 0, 0, 0}, 0, () -> Ingredient.of(Items.POTATO), "item.armor.equip_leather", 0.0f, 0.0f),
 	JETPACK("jetpack", 0, new int[] {0, 2, 0, 0}, 10, () -> Ingredient.of(Items.IRON_INGOT), "item.armor.equip_iron", 0.0f, 0.0f),
 	JETPACK_ARMORED("jetpack_armored", 0, new int[] {0, 4, 0, 0}, 10, () -> Ingredient.of(Items.IRON_INGOT), "item.armor.equip_iron", 0.0f, 0.0f),
 	JETPLATE("jetplate", 0, new int[] {0, 12, 0, 0}, 10, () -> Ingredient.of(Items.IRON_INGOT), "item.armor.equip_iron", 3.0f, 3.0f);
